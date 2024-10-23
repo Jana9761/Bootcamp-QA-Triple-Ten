@@ -466,3 +466,646 @@ Você pode estar se perguntando por que isso é chamado de teste de regressão. 
 
 Testes de regressão geralmente envolvem um conjunto completo de testes. Na verdade, testes de fumaça também são parte do teste de regressão. Porém, é importante lembrar que o teste de regressão não é o teste "inicial" realizado (caso contrário, não haveria possibilidade de regressão). Durante o teste de regressão, os testadores primeiro executam testes de fumaça para verificar se os principais elementos de um aplicativo funcionam conforme esperado. Depois disso, eles podem executar o resto dos testes.
 SPRINT 2 Alterando meu README
+
+Projeto-2
+
+- Introdução à análise de requisitos
+Aqui, você vai começar a aprender tudo que precisa para realizar testes de forma independente do zero. A primeira etapa nesse processo é a análise de requisitos. Durante essa etapa, um analista de QA estuda os requisitos do aplicativo (ou aplicação) para entender o que se espera do produto testado.
+
+💡 Os requisitos do aplicativo descrevem as principais características e funcionalidades dele. Eles são cruciais para os testes, pois ajudam a entender o resultado esperado – o que se espera que o aplicativo faça e como.
+Para iniciar a análise de requisitos, você precisa obter os requisitos, é claro. Normalmente, um analista de QA recebe requisitos de um gerente; sem eles, você não pode começar a trabalhar em uma tarefa de teste.
+
+Durante a análise de requisitos, você precisa decompor e visualizar os requisitos e então encontrar áreas cinzentas.
+Para iniciar a análise de requisitos, você precisa obter os requisitos, é claro. Normalmente, um analista de QA recebe requisitos de um gerente; sem eles, você não pode começar a trabalhar em uma tarefa de teste.
+
+Durante a análise de requisitos, você precisa decompor e visualizar os requisitos e então encontrar áreas cinzentas.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (20).png ">
+Análise de requisitos: identificação de objetos de teste
+
+A primeira etapa será identificar objetos de teste nesses requisitos. Isso significa definir o que você vai precisar testar, o que vai ajudar em todas as próximas etapas da análise de requisitos.
+
+O que são objetos de teste
+Objetos de teste são partes do aplicativo que precisam ser testadas. Eles são identificados durante a análise de teste.
+
+Digamos que uma empresa desenvolveu um servidor de e-mail — um aplicativo para trocar e-mails. Com a última atualização, o aplicativo ganhou um novo recurso: agora ele pode identificar mensagens de spam e armazená-las em uma pasta separada.
+
+Primeiro, um analista de QA não vai testar o aplicativo inteiro, mas vai se concentrar em uma função específica. Nesse caso, lidar com spam — esse se torna o objeto de teste.
+
+Vamos identificar os objetos de teste nos requisitos do aplicativo Urban Routes.
+
+Requisitos funcionais
+A seção requisitos funcionais descreve como o aplicativo deve funcionar. Com base nesses requisitos e designs, um desenvolvedor escrever o código e um analista de QA projeta os testes.
+
+Tente analisar os requisitos funcionais do Urban Routes e identificar vários objetos de teste.
+
+💡 Os objetos de teste representam a funcionalidade descrita nos requisitos.
+
+Por exemplo, os requisitos declaram: "Existem os seguintes botões de seleção do modo de rota: "Optimal," "Flash" e "Personal", e também botões de seleção do tipo de transporte: carro pessoal, compartilhamento de carro, táxi, scooter, bicicleta e a pé.”
+
+Como testador, você precisa verificar o seguinte:
+
+A seção do modo de rota possui os botões necessários.
+Cada botão desempenha sua função (por exemplo, o botão "Optimal" atribui automaticamente o tipo de transporte, cria uma rota e exibe o tempo e o custo da viagem).
+Os objetos de teste para essa parte dos requisitos serão a seleção do modo de rota e os botões do tipo de transporte.
+
+Agora vamos dar uma olhada em outro requisito: "Se o campo 'De' for preenchido incorretamente, o ponto A não será exibido."
+
+Você precisa verificar se ele realmente não é exibido. O objeto de teste aqui é o campo "De".
+
+Restrições para os campos de entrada de endereços
+A próxima seção dos requisitos do Urban Routes descreve o formato dos dados dos campos de entrada de endereço, "De" e "Para":
+
+Apenas letras latinas, números, espaços, traços, pontos e vírgulas
+Pode ter de 1 a 50 caracteres
+Você precisa verificar se o campo aceita apenas dados nesse formato. Por exemplo, deve ser possível digitar "1300 1st St", mas não "1300 / 1st St" (pois a barra / não é aceitável).
+
+Layouts
+Os requisitos descrevem determinados aspectos da aparência de um aplicativo. Layouts costumam acompanhar os requisitos, já que uma representação visual de uma interface é mais intuitiva para a maioria das pessoas.
+
+Decomposição de requisitos
+Agora que você conheceu os requisitos, pode passar para a primeira etapa da análise de requisitos: a decomposição.
+
+A decomposição é uma etapa importante que torna o design de testes mais fácil. Antes de prosseguir, vamos ver onde a decomposição se encaixa no quadro geral.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (21).png">
+Para analisar os requisitos corretamente, você deve realizar as seguintes etapas:
+
+Decompor: dividir cada requisito em blocos atômicos. Você vai aprender o que isso significa mais adiante na lição.
+Visualizar: criar gráficos ou diagramas simples (mapas mentais e fluxogramas) para entender como os blocos atômicos se encaixam.
+Pesquisar áreas cinzentas: procurar cenários que talvez os requisitos não mencionem explicitamente.
+Por que decompor?
+Os requisitos não são escritos perfeitamente. Trabalhar em uma tarefa grande e complexa é como resolver um quebra-cabeça gigante. Se você já tentou montar um desses, sabe que é muito difícil apenas olhar as peças no chão e saber exatamente como tudo se encaixa.
+
+Então, como você começa? Uma abordagem é olhar a imagem na caixa e começar a dividir as peças em seções para descobrir com quais partes trabalhar. Por exemplo, você pode fazer uma divisão mental em formas, cores ou regiões distintas e começar daí.
+
+Nos testes, seguimos um processo semelhante: ao pegar um objeto ou requisito de teste e o decompor logicamente, podemos testar partes individuais.
+
+Como decompor requisitos
+Você pode seguir estas três regras simples ao decompor requisitos:
+
+Os requisitos muitas vezes podem ser decompostos em várias partes.
+Os requisitos devem ser decompostos em blocos atômicos.
+Os requisitos não devem ser decompostos além da descrição.
+Vejamos cada uma delas com mais detalhes.
+
+1. Você geralmente pode dividir um requisito em diversas partes.
+Digamos que você estudou os requisitos do Urban Routes e identificou um objeto de teste: o formulário de seleção de endereço. O formulário contém dois campos de entrada: "De" e "Para". Essas são as partes menores nas quais você pode dividir um único requisito de formulário de seleção de endereço.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (22).png">
+2. Os requisitos são decompostos até o nível atômico, o que significa que não podem ser reduzidos mais que isso.
+Por exemplo, você pode decompor as restrições de entrada do campo "De" da seguinte forma:
+
+Entrada — letras latinas
+Entrada — números
+Entrada — espaços
+Entrada — traços
+Entrada — pontos
+Entrada — vírgulas
+Entrada — de 1 a 50 caracteres
+Entrada — mais de 50 caracteres
+Esse é o nível atômico: você não pode detalhar esse requisito além disso.
+
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (23).png">
+3. Os requisitos não devem ser decompostos além da descrição.
+Por exemplo, se os requisitos para o campo "De" não disserem nada sobre letras maiúsculas e minúsculas, será suficiente verificar as letras do alfabeto latino. Você não precisa criar uma decomposição para letras maiúsculas e minúsculas.
+
+
+- Visualização de requisitos
+A visualização é a próxima etapa depois da decomposição. Um gráfico ilustrativo vai ajudar você a estruturar e compreender as informações dos requisitos de maneira mais fácil.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (24).png">
+Mapa mental
+Imagine que você esteja testando uma página de login e recebe os seguintes requisitos:
+
+◻️ Há um título "Esta é a página de login" no meio da página e um subtítulo com o texto "Insira seus dados para acessar a plataforma". Abaixo do título estão os campos de entrada "Nome de usuário" e "Senha". O nome de usuário deve conter entre 8 e 10 caracteres e apenas letras latinas. A senha deve conter 8 dígitos, mas não pode ter mais de 3 dígitos repetidos. No campo "Senha", há um link azul que diz "Esqueceu sua senha?" e leva à página de redefinição de senha. Depois disso, existem dois botões: à direita, o botão "Login", que redireciona para a página inicial se todos os dados estiverem corretos, e à esquerda, o botão "Cadastre-se", que possui um rótulo acima com o texto "Ainda não tem uma conta?"
+
+São muitas informações! Com um texto tão longo, pode ser um pouco difícil entender os requisitos. Sem mencionar que você pode encontrar requisitos ainda maiores e mais complexos.
+
+Para entender melhor esses requisitos, você pode dividi-los em seções — por exemplo, funcionalidade e interface — e visualizá-los como um mapa mental:
+
+Um mapa mental é um método de visualização de relacionamentos associativos. É uma maneira prática para um analista de QA visualizar os requisitos. Você pode desenhar um mapa mental após a decomposição ou em paralelo com ela.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (25).png">
+Após desenhar um mapa mental como esse, você vai entender melhor os requisitos e vai poder retornar ao mapa mental caso precise atualizar algo necessário no aplicativo.
+
+Fluxograma
+Enquanto um mapa mental mostra o que está no aplicativo, um fluxograma descreve como o aplicativo funciona.
+
+Um fluxograma mostra a ordem das etapas que devem ser seguidas para resolver uma tarefa específica em um aplicativo.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (26).png">
+Digamos que você queira cadastrar uma conta da Netflix e pagar por uma assinatura. Essas são duas funcionalidades diferentes, o que significa que deve haver um fluxograma para cada uma.
+
+Um fluxograma também descreve o comportamento de um aplicativo se algo for feito de maneira incorreta. Por exemplo, colocar um endereço de e-mail inexistente ou esquecer de vincular um cartão bancário.
+
+Como desenhar um mapa mental
+Para criar um mapa mental, é preciso dividir os requisitos em elementos que melhor descrevem as funções.
+
+Por exemplo, você pode usar os requisitos decompostos da lição anterior:
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (27).png">
+Aqui está um mapa mental que você pode obter ao criar uma visualização desses requisitos:
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (28).png">
+💡 O principal objetivo de um mapa mental é agilizar o processo de teste: você não vai precisar consultar os requisitos o tempo todo se o seu mapa mental for detalhado o suficiente. Ele serve como um guia completo, permitindo que você entenda os requisitos e faça o design dos testes de maneira mais eficaz.
+Como desenhar um fluxograma
+Veja o fluxograma que descreve a interação entre um pedestre e os semáforos:
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (29).png">
+Cada elemento no fluxograma representa uma etapa. Os elementos são conectados por linhas com setas que mostram a direção.
+
+Aqui estão as formas geométricas mais comuns em fluxogramas:
+
+Um retângulo arredondado representa o começo e o fim de um fluxograma.
+Um retângulo comum representa uma ação. Por exemplo: "Pare".
+Um paralelogramo representa entrada e saída. Por exemplo, inserir um nome de usuário.
+Um diamante representa uma condição. O processo vai continuar em uma ramificação que corresponda ao resultado. Por exemplo: O sinal de pedestre está sendo mostrado? A condição foi atendida? O valor está correto?
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (30).png">
+Você pode criar a visualização dos requisitos em um pedaço de papel ou usar estas ferramentas online:
+
+draw.io
+Miro
+XMind
+lucidchart
+A diferença entre mapas mentais e fluxogramas
+Tente se lembrar da diferença entre um mapa mental e um fluxograma:
+
+Um mapa mental mostra os elementos constituintes de um aplicativo de maneira estruturada.
+Um fluxograma ilustra a maneira como uma função funciona do início ao fim. Desenhar fluxograma vai ajudar a entender melhor como um aplicativo é construído, além de desenvolver seu pensamento analítico.
+Ambos vão ser úteis durante os testes.
+
+💡 Visualizar requisitos é uma tarefa criativa que pode ser abordada de diferentes maneiras. Isso significa que você pode desenhar diferentes mapas mentais para o mesmo conjunto de requisitos. No entanto, no geral, você não vai ter muitas opções diferentes para desenhar fluxogramas, pois eles representam regras consistentes de como um aplicativo deve funcionar.
+
+- Áreas cinzentas e pesquisa de requisitos
+As pessoas costumam escrever coisas com base em sua compreensão ou expectativas. No entanto, muitas vezes, elas sem querer presumem que os outros têm o mesmo conhecimento ou expectativas que elas. Quando as informações nos requisitos não são suficientes para entender por completo alguma funcionalidade, isso significa que encontramos áreas cinzentas. Nesta lição, você vai aprender como identificá-las.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (31).png">
+Sprint 2: Design de Teste
+
+- Análise de requisitos
+- Áreas cinzentas e pesquisa de requisitos
+
+
+As pessoas costumam escrever coisas com base em sua compreensão ou expectativas. No entanto, muitas vezes, elas sem querer presumem que os outros têm o mesmo conhecimento ou expectativas que elas. Quando as informações nos requisitos não são suficientes para entender por completo alguma funcionalidade, isso significa que encontramos áreas cinzentas. Nesta lição, você vai aprender como identificá-las.
+Um exemplo, você pode usar o aplicativo do Urban Routes , parra fazer está verificação.
+
+
+
+Estude os requisitos do Urban Routes e identifique quais desafios você pode encontrar:
+
+Requisitos não especificados e incompletos. Muitas vezes, você só vai notar isso após reler os requisitos algumas vezes. Por exemplo, como o sistema deveria reagir se colocarmos o mesmo endereço nos campos "De" e "Para"? Deve haver uma mensagem de erro? Ou a rota deve ser criada?
+Requisitos implícitos. Os autores da documentação costumam excluir os requisitos que acreditam serem óbvios. Por exemplo, o logotipo do Urban Routes no canto superior esquerdo deve ser clicável: ao clicar nele, a página principal do aplicativo Routes deve ser aberta.
+Os designs e requisitos não correspondem. Por exemplo, os designs do Routes possuem a seguinte ordem de tipo de transporte: carro particular, a pé, táxi, bicicleta, scooter e compartilhamento de carro. Já nos requisitos é especificada a seguinte ordem: carro particular, compartilhamento de carro, táxi, scooter, bicicleta e a pé.
+Faltam requisitos. Isso também acontece. Por exemplo, os requisitos para o Routes não descrevem as funcionalidades de alguns elementos no mapa. Por exemplo, os botões do Mapa/Satélite estão presentes nos designs, mas não está descrito como eles devem funcionar.
+O que fazer ao encontrar áreas cinzentas
+Continue tentando: digamos que você clique em um botão na interface do Urban Routes e não tenha certeza sobre o que vai acontecer, pois os requisitos não estão claros. Você pode tentar diferentes cenários, como atualizar a página. Não hesite em tentar métodos aleatórios!
+Verifique cenários de teste semelhantes: examine casos de teste semelhantes para ver se há pistas. Não se esqueça de revisar tudo isso para dominar sua tarefa! Uma solução que você encontrou anteriormente para uma área cinzenta pode ser útil de novo mais tarde.
+Esclareça os requisitos: após identificar as áreas cinzentas, é essencial pedir às pessoas certas que as esclareçam. Lembre-se, a comunicação é fundamental! Isso pode variar entre projetos e empresas, mas o ideal é perguntar a um gerente de produto ou analista. Pergunte sobre o conceito do aplicativo e as expectativas do usuário e informe sobre as áreas cinzentas que você encontrou. Essas pessoas vão ter uma resposta ou você pode conferir com o cliente. Elas podem até atualizar os requisitos.
+Dicas:
+
+Tente imaginar como o aplicativo deveria funcionar. Coloque-se no lugar do usuário: tudo está claro e é conveniente?
+Faça perguntas: qual a finalidade de um objeto de teste específico, como ele funciona e a quais outros elementos ele está conectado?
+Elabore um plano de teste e descubra quais tipos de testes são necessários para a funcionalidade. Isso vai tornar os requisitos necessários mais transparentes.
+As áreas cinzentas são como um quebra-cabeça a ser resolvido. Para resolvê-las, prepare-se para fazer perguntas e explorar!
+
+A quem perguntar sobre as diferentes áreas cinzentas
+A comunicação é fundamental quando se trata de esclarecer os requisitos. Caso encontre áreas cinzentas, você pode perguntar às seguintes pessoas:
+
+Desenvolvedor: pergunte sobre a implementação dos requisitos no código.
+Gerente de produto ou analista: pergunte sobre o conceito de um aplicativo, as expectativas do usuário e as inconsistências entre os requisitos e os designs.
+Designer: pergunte sobre os cenários de caso de teste de um aplicativo e seus designs.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (32).png">
+A comunicação interna é muito importante: sem ela, a equipe pode ter informações incompletas sobre uma tarefa ou dúvida.
+
+É essencial que você sempre faça as perguntas necessárias para resolver uma tarefa. Testadores iniciantes costumam fazer suposições em vez de fazer perguntas, o que pode tornar o trabalho em uma tarefa mais longo ou até mesmo causar erros. Portanto, nunca hesite em pedir esclarecimentos quando necessário.
+
+- Testes funcionais e não funcionais
+Os requisitos (e, portanto, os testes) podem ser funcionais ou não funcionais.
+Requisitos e testes funcionais
+Testes funcionais visam verificar a funcionalidade de um produto de software. Essencialmente, o analista de QA deve garantir que tudo funciona conforme descrito nos requisitos.
+
+O teste funcional pode analisar o seguinte:
+
+A lógica de um sistema: por exemplo, testa a lógica que determina como o custo de uma viagem é calculado.
+Interação do usuário com um serviço: por exemplo, como a escala de um mapa muda quando você clica nele.
+Exibição de dados: por exemplo, como as informações sobre uma viagem são exibidas para o usuário.
+Um requisito funcional pode ser mais ou menos assim: "Ao preencher o campo 'Para' e clicar no botão 'Enviar', o aplicativo deve enviar um e-mail para o endereço indicado." Ele descreve o que o aplicativo pode executar. Em outras palavras, descreve sua funcionalidade.
+
+Para verificar se um aplicativo atende aos requisitos funcionais, são realizados testes funcionais.
+
+Vejamos um exemplo de teste funcional. Imagine que você esteja testando o site do Google para confirmar se, ao clicar no logotipo no canto superior esquerdo da página de busca, a página inicial do Google é aberta.
+Requisitos e testes funcionais
+Testes funcionais visam verificar a funcionalidade de um produto de software. Essencialmente, o analista de QA deve garantir que tudo funciona conforme descrito nos requisitos.
+
+O teste funcional pode analisar o seguinte:
+
+A lógica de um sistema: por exemplo, testa a lógica que determina como o custo de uma viagem é calculado.
+Interação do usuário com um serviço: por exemplo, como a escala de um mapa muda quando você clica nele.
+Exibição de dados: por exemplo, como as informações sobre uma viagem são exibidas para o usuário.
+Um requisito funcional pode ser mais ou menos assim: "Ao preencher o campo 'Para' e clicar no botão 'Enviar', o aplicativo deve enviar um e-mail para o endereço indicado." Ele descreve o que o aplicativo pode executar. Em outras palavras, descreve sua funcionalidade.
+
+Para verificar se um aplicativo atende aos requisitos funcionais, são realizados testes funcionais.
+
+Vejamos um exemplo de teste funcional. Imagine que você esteja testando o site do Google para confirmar se, ao clicar no logotipo no canto superior esquerdo da página de busca, a página inicial do Google é aberta.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (33).png">
+Os requisitos indicam: "Clicar no logotipo, no canto superior esquerdo, redireciona o usuário para a página inicial".
+
+Os testes para esse requisito são funcionais, pois avaliam uma funcionalidade específica do aplicativo: a capacidade do logotipo do Google, quando clicado, de redirecionar o usuário para a página inicial.
+
+Os testes funcionais visam verificar se o aplicativo se comporta conforme esperado do ponto de vista do usuário; neste caso, garantir que a navegação até a página inicial funcione corretamente.
+
+Requisitos e testes não funcionais
+Testes não funcionais verificam as características de um sistema. A documentação do produto geralmente também contém requisitos não funcionais. Eles referem-se às características do produto que não afetam diretamente a funcionalidade.
+
+Por exemplo, um requisito não funcional para o site do Google poderia ser: "O redirecionamento da página de pesquisa para a página inicial é concluído em 0,5 segundo".
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (34).png">
+Nesse caso, nosso foco não é apenas verificar a funcionalidade do botão, mas testar a rapidez do redirecionamento.
+
+Vejamos outro exemplo. A equipe decidiu atualizar o aplicativo Urban Routes com um novo recurso — um botão para alternar idiomas para que o aplicativo possa ser facilmente usado em diferentes países. Veja os requisitos para este novo recurso:
+
+"O botão para trocar o idioma deve ser adicionado no canto superior direito do Urban Routes. Ele deve ser um menu suspenso com os seguintes idiomas: inglês, espanhol e português. Inglês é selecionado por padrão. Depois que o usuário seleciona um idioma no menu suspenso, a interface do aplicativo é traduzida para o idioma selecionado.”
+
+Para verificar o aplicativo de acordo com esses requisitos, precisamos verificar o seguinte: 
+
+Se o aplicativo é alterado para o idioma selecionado (teste funcional)
+Se todos os elementos foram traduzidos corretamente para o idioma selecionado (testes não funcionais)
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (35).png">
+Os testes não funcionais ajudam a testar um aplicativo de acordo com critérios que não estão relacionados à sua operação real.
+
+Os principais tipos de testes não funcionais são testes de segurança e testes de desempenho.
+
+Alguns projetos também exigem testes de usabilidade e testes de localização. Respectivamente, esses testes verificam se o software é fácil de interagir e se o texto foi traduzido corretamente.
+
+- Introdução ao design de teste
+Durante a fase de design de teste, os analistas de QA criam casos de teste usados posteriormente para realizar os testes. No entanto, a criação de casos de teste exige muita preparação – não podemos simplesmente sair criando casos.
+
+- Design de casos de teste
+O design de teste envolve a criação dos casos de teste. Ao realizar a análise de requisitos, você perguntava: "O que estou testando?" Quando criamos casos de teste, perguntamos: "Como vou fazer o teste?" É como descrever as etapas que você precisa dar para preparar um novo prato gostoso.
+
+Por que precisamos de casos de teste? Queremos ter certeza de que o software será testado por completo. Sem casos de teste, o teste seria aleatório, e arriscaríamos perder etapas e cenários críticos. Usar casos de teste garante que todos os aspectos do software sejam examinados e que o teste seja realizado de forma sistemática.
+
+Uma vez que os casos de teste sejam criados, um analista de QA vai trabalhar neles e fará seu melhor para seguir cada caso de teste conforme escrito. As equipes de controle de qualidade dividem o trabalho entre seus membros, então o testador pode não ser a mesma pessoa que escreveu os casos de teste e também pode não estar familiarizado com os requisitos para as funcionalidades testadas. É por isso que é tão importante criar os casos de teste o mais detalhadamente possível.
+
+Regras do design de teste
+Existem cinco regras importantes no design de testes.
+
+Você talvez precise de vários casos de teste para verificar um requisito. Por exemplo, um requisito diz: "O mapa do Urban Routes é escalável." Você pode testar essa funcionalidade de diferentes maneiras:
+Usando os botões "+" e "-" na interface
+Usando o botão de rolagem do mouse ou um touchpad
+Usando gestos com dispositivos móveis
+Um caso de teste é igual a um teste. Para testar a escalabilidade do mapa do Urban Routes, vale a pena criar dois casos de teste: um para o botão "+" e outro para o botão "-". Se você combinar ambos os testes em um caso e um dos botões tiver um bug, você não vai conseguir identificar qual deles tem esse bug.
+As funcionalidades testadas não devem ser duplicadas nos testes. Digamos que você testou o botão "+" no caso de teste "Escalabilidade do mapa do Urban Routes". Isso significa que você não precisa criar um caso de teste para a "Exibição do botão '+' na interface." Obviamente, o botão é exibido.
+O design dos testes precisa ser feito conforme os requisitos. Se os requisitos não descreverem como um smartphone funcionaria a -120 °C, não escreva um caso de teste em que você precise afundar um smartphone em nitrogênio líquido.
+Os testes devem abranger todos os requisitos. Você precisa se certificar de que seus casos de teste verificam todas as funcionalidades.
+
+- Testes positivos e negativos
+O design de teste envolve a criação de casos de teste positivos e negativos.
+
+- Casos de teste positivos
+Um caso de teste positivo verifica se um aplicativo funciona corretamente, de acordo com um determinado requisito e usando dados válidos.
+- Casos de teste negativos
+Os casos de teste negativos verificam se o aplicativo responde corretamente quando os dados são utilizados incorretamente ou são inválidos. O aplicativo deve implementar a manipulação de erros adequada para lidar com um comportamento inesperado do usuário.
+
+Particionamento em classes de equivalência
+Uma das técnicas fundamentais do design de teste é o particionamento em classes de equivalência. Essa técnica permite agrupar (ou particionar) os dados de teste, reduzindo o número de testes que precisamos executar sem reduzir a eficácia dos testes. Vamos ver isso em mais detalhe.
+
+O que é equivalência?
+Equivalência é a igualdade dos objetos. Durante a testagem, os valores equivalentes são aqueles que são processados da mesma maneira por um aplicativo.
+
+Por exemplo, os requisitos para os campos de endereço no Urban Routes indicam: "O comprimento aceitável é de 1 até 50 caracteres."
+
+Isso significa que o aplicativo processa os valores do comprimento de 1 a 50 caracteres da mesma maneira. Os valores com comprimentos maiores do que 50 caracteres são processados de forma diferente, por exemplo, exibindo uma mensagem de erro.
+
+Os testadores combinam esses valores em classes de equivalência.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (35).png">
+Há três classes de equivalência para cada um dos campos de endereço, "De" e "Para":
+
+Valores	                 /                       Reação aplicativo
+campo vazio (0 caractere)	                       Erro
+entre 1 e 50	                                  Sem erro
+entre 51 e ∞	                                      Erro
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (37).png">
+Então, como isso fica quando executamos testes? Em vez de executar vários testes para cada grupo, você pode escolher um valor de cada grupo para testar. O aplicativo vai reagir para qualquer um deles da mesma maneira. Você pode escolher os seguintes valores:
+
+0 caractere (deixar o campo vazio deve ser inválido)
+20 caracteres (20 é mais do que 1 e menos do que 50, então deve ser válido)
+52 caracteres (52 é mais do que 50, então deve ser inválido)
+Essa técnica não apenas economiza o tempo gasto para criar e executar casos de teste, mas também abrange todos os cenários possíveis, o que permite realizar um teste exaustivo.
+
+- Como identificar classes de equivalência
+Uma classe de equivalência é um intervalo de números ou um conjunto de valores que faz com que um aplicativo reaja da mesma maneira.
+
+Use o seguinte algoritmo para identificar classes de equivalência:
+
+Divida o requisito em blocos atômicos.
+Para cada bloco, identifique o tipo das classes: um intervalo de números ou um conjunto de valores.
+Identifique os valores corretos. Você pode encontrá-los nos requisitos.
+Identifique valores incorretos. Eles incluem tudo que não foi identificado na terceira etapa.
+Descubra o que acontece se você inserir valores incorretos.
+
+- Como escolher valores de teste:
+Nesta lição, você vai aprender como escolher um valor de teste dentro de cada classe. Esses são os valores que você vai usar em testes.
+
+Uma hipótese comum durante o teste é que, se um aplicativo tiver processado corretamente um valor de uma classe, ele vai fazer o mesmo com o restante dos valores. Da mesma forma, se algum dos valores de uma classe causar um erro, o mesmo vai acontecer com todos os valores dessa classe.
+
+Portanto, para escolher um valor de teste, basta pegar qualquer valor dentro da classe.
+
+No entanto, os valores-limite não devem ser usados. Esses são valores nos limites de um intervalo. Por exemplo, 1 e 50 são os valores-limite da classe "O comprimento do texto é de 1 a 50 caracteres.” Eles serão usados para uma finalidade diferente, portanto, não vão aparecer nesse grupo de teste. Vamos falar sobre os valores-limite na próxima lição.
+- Valores-limite:
+Agora, você vai aprender como identificar valores-limite de classes.
+
+Um valor-limite é um valor igual ao mínimo ou máximo permitido.
+
+⚠️ Apenas um intervalo pode ter valores-limite. Conjuntos não têm.
+
+Por exemplo, os requisitos para o campo de telefone no formulário para chamar um táxi no Urban Routes dizem que você pode inserir de 10 a 12 caracteres.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (38).png">
+Isso significa que 10 e 12 são limites da classe "número de telefone válido".
+Cerifique-se de sempre verificar os valores-limite, porque bugs costumam aparecer nos limites. Veja estes exemplos:
+
+Indicador de bateria. Celulares geralmente mostram a porcentagem da carga restante da bateria. Se o seu celular mostrasse 0%, mas ainda estivesse ligado e funcionando, seria estranho, certo? Sendo assim, saber o limite pode ajudar a revelar bugs durante o teste.
+Cálculo de idade. Pode parecer muito simples descobrir a idade de uma pessoa sabendo sua data de nascimento. No entanto, algumas datas se destacam. Por exemplo, anos bissextos. E se a data de nascimento de uma pessoa for 29 de fevereiro, que ocorre uma vez a cada quatro anos? Se você apenas contar o número de aniversários que a pessoa teve, vai obter a idade errada: por exemplo, 6 em vez de 24. Esse é o tipo de erro que os programas de computador cometem, e você deve tomar cuidado com eles.
+Tipos de limites
+Às vezes, os limites vão ser fáceis de identificar, como no exemplo anterior, sobre o comprimento do número de telefone. Em outros casos, eles podem ser difíceis de identificar. Vamos ver quais tipos de dados podem ser encontrados nos requisitos:
+
+🔢 Números inteiros, ou integers, são bastante usados em cenários da vida real ao contar itens que não podem ser divididos em partes menores. Por exemplo, se você tem 30 livros em uma estante e 45 em outra, está lidando com números inteiros. Da mesma forma, um professor pode escrever que 25 alunos estão presentes na aula. Esses cenários implicam na contagem de quantidades de itens inteiros, e números inteiros costumam ser usados com esse propósito.
+
+💲 Decimais, ou fracionários, representam quantidades não inteiras. Por exemplo, você frequentemente encontra preços como $ 1,99 ou instruções culinárias como "adicionar 1,5 colher de chá de açúcar". Os decimais garantem precisão em questões financeiras e medidas.
+
+🕒 Intervalos de tempo são outro tipo de dados comum usado para medidas ou estimativa de tempo. Pense em um aplicativo que rastreia o número de horas trabalhadas por dia. O aplicativo calcula o pagamento de horas extras com base no número de horas trabalhadas após as 8 horas do dia de trabalho padrão. Se testarmos esse aplicativo usando valores-limite em intervalos de tempo, podemos encontrar algumas discrepâncias. Por exemplo, se o turno começar no dia 31 de março (final do mês) e terminar no dia 1º de abril, às 00h, poderá ser contabilizado no salário de abril, o que não é justo!
+
+💡 Observe que, às vezes, os requisitos possuem descrições vagas dos intervalos. Por exemplo, "números positivos" ou "maioridade". O trabalho de um analista de QA é encontrar o significado dessas discrepâncias.
+
+Valores-limite no design de teste
+Vamos pensar em um exemplo da vida real: imagine que você esteja testando um aplicativo de banco em que você pode descobrir suas oportunidades de empréstimo.
+
+Cada banco tem os próprios requisitos para fornecer empréstimos aos clientes. Por exemplo: "Apenas adultos podem pegar um empréstimo".
+
+Primeiro, precisamos descobrir com que tipo de dados estamos lidando e como os limites são definidos. Nesse exemplo, estamos lidando com idade em números inteiros. Contudo, ainda precisamos esclarecer quais são os limites que definem um "adulto". Digamos que você conversou com um gerente e descobriu que, para o seu banco, um adulto é uma pessoa com idade entre 18 e 65 anos.
+
+Para verificar o funcionamento de um aplicativo com esses valores-limite, é preciso seguir estas etapas:
+
+Identificar o intervalo dos valores, ou seja, dos 18 aos 65 anos. Nesse intervalo, uma pessoa pode pegar um empréstimo.
+Verificar se o aplicativo funciona com valores-limite, ou seja, 18 e 65 anos, conforme solicitado.
+Verificar se o aplicativo funciona com base em uma lógica diferente quando estiver fora dos limites do intervalo, ou seja, com valores de 17 e 66.
+Verificar se o aplicativo funciona conforme solicitado dentro dos limites do intervalo, ou seja, com valores de 19 e 64.
+Assim, para testar o campo idade nesse aplicativo bancário, você vai precisar incluir seis verificações: 18 e 65; 17 e 66; 19 e 64.
+
+Você pode usar o mesmo algoritmo para outros intervalos.
+
+Digamos que você precisa verificar um campo no qual o usuário insere o número de minutos. Um usuário pode inserir de 15 a 45 minutos. O tipo de dados é um intervalo de tempo. A etapa é de 1 minuto.
+
+Aqui está a ordem em que você precisa testar os valores-limite:
+
+Identifique o tipo de dados e a etapa: um intervalo de tempo e 1 minuto.
+Verifique se o aplicativo funciona bem com valores-limite do intervalo: 15 e 45.
+Passe para uma etapa fora do intervalo e verifique os seguintes valores: 14 e 46.
+Passe para uma etapa dentro do intervalo e verifique os seguintes valores: 16 e 44.
+A seguinte lista pode ajudar a recordar como definir seus dados de teste nos limites:
+
+LI: limite inferior
+LS: limite superior
+LI - 1: limite inferior - uma etapa
+LS + 1: limite superior + uma etapa
+LI + 1: limite inferior + uma etapa
+LS - 1: limite superior - uma etapa
+
+- Como usar classes de equivalência e valores-limite juntos
+imite. Nesta lição, você vai aprender a usar ambas as técnicas juntas.
+
+Digamos que você possa recarregar o saldo do seu celular com um valor de $ 1 a $ 49,99. Você não pode escolher uma quantia menor ou maior.
+
+Tipo de dados: um decimal com duas casas decimais, em que a parte inteira é para reais, e a parte decimal é para centavos. A etapa é 0,01.
+
+Classes de equivalência:
+
+0.00 — 00.99
+1.00 — 49.99
+50.00 ou mais
+Como você testa a recarga usando as técnicas de classes de equivalência e valores-limite da melhor maneira possível? Primeiro, você precisa testar os valores dentro da classe e então seguir o algoritmo de teste com base em valores-limite:
+
+Teste os valores dentro das classes: 00,50, 2,50 e 55,00. Se os testes forem bem-sucedidos, vá para a próxima etapa. Se não, não existe razão para continuar testando o aplicativo. Ele não funciona.
+Para cada classe, teste os valores-limite e os valores uma etapa dentro e uma fora dos limites. Você não pode definir um valor de fora dos limites na primeira classe — não é possível recarregar seu saldo com uma soma negativa. Se os testes forem bem-sucedidos, você confirmou que os limites estão corretos.
+💡 Os valores-limite da classe "50 ou mais" também podem ser escritos como "50,00 —+∞". Mas como testar o infinito? Na verdade, isso é possível: é uma prática recomendada testar como um aplicativo reage a um número muito grande. Escolha um valor pelo menos 1.000 vezes maior que o maior valor-limite, e isso vai ser suficiente para verificar se valores grandes são aceitos. Nesse caso, você pode testar valores de 50.000 ou 5.000.000.
+
+- Otimização de teste
+💡 O princípio mais importante da otimização é reduzir o número de duplicatas antes da testagem.
+
+
+- Projeto-3
+Introdução ao Teste de Aplicativos Web
+Os princípios de funcionamento de um aplicativo web: você vai aprender como um aplicativo web é organizado e como usar ferramentas de desenvolvimento.
+Testes de interface em aplicativos web: nesta seção, você vai aprender a testar os elementos de uma interface, compará-los com designs e usar o editor Figma.
+Testes entre plataformas e navegadores: esse tópico vai ensinar sobre como testar aplicativos web em vários dispositivos e navegadores.
+Testes de adaptabilidade do layout: nesse tópico, você vai estudar várias abordagens de design de layouts, bem como os recursos usados para testar o layout da versão móvel de um aplicativo web.
+Design de testes: ao concluir esse tópico, você vai saber como criar testes para aplicativos web.
+  - 
+Aplicativo web
+Você provavelmente visualiza toneladas de páginas da web todos os dias: para procurar algo no Google ou abrir o bootcamp de Analista de QA, por exemplo. Você visualiza essas páginas no seu dispositivo usando um navegador, como Safari, Chrome ou Firefox.
+
+Um navegador é um software que envia solicitações para um servidor, recebe respostas, processa informação e exibe os resultados na página de um aplicativo (ou aplicação) web.
+
+No entanto, há muito mais em um aplicativo web do que apenas a interface que você vê.
+
+Quero saber mais
+Front-end e back-end
+Um aplicativo web consiste em duas partes:
+
+Um conjunto de páginas que o usuário vê em um navegador. Por exemplo, a página de busca do Google ou a página de destino do bootcamp de Analista de QA.
+Um conjunto de operações lógicas e cálculos que processam as solicitações de um usuário. Por exemplo, quando você clica no botão "Escolher bootcamp", o navegador envia sua solicitação para um servidor, obtém uma resposta e exibe uma lista de todos os bootcamps na página.
+A parte visual de uma página é desenvolvida por um desenvolvedor front-end.
+
+O código das operações e dos cálculos que processam essas solicitações e geram respostas são escritos por desenvolvedores back-end.
+
+O front-end e o back-end são duas partes de um aplicativo web.
+O front-end é a parte visível de um aplicativo. Um usuário interage com ele, por exemplo, clicando em botões ou digitando algum texto.
+
+O back-end é a parte oculta de um aplicativo. Ele lida com cálculos, lógica e armazenamento de dados.
+A maioria dos aplicativos web são projetados usando a arquitetura cliente-servidor.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (39).png">
+Os elementos da arquitetura cliente-servidor funcionam conforme os seguintes princípios:
+
+O cliente se conecta a um servidor e transforma as ações do usuário em solicitações, que são enviadas ao servidor. Por exemplo, quando você clica em um vídeo do YouTube, está interagindo com o cliente.
+O servidor processa as solicitações de um cliente e gera uma resposta. Por exemplo, após ter clicado em um vídeo, o servidor envia informações sobre o vídeo: curtidas, comentários e visualizações. Um servidor costuma ser um computador potente que fica separado de um cliente. Por exemplo, os servidores do Google ficam em centro de dados especiais.
+A internet, ou uma rede, conecta o cliente e o servidor. Sem ela, eles não conseguiriam entrar em contato um com o outro.
+O front-end é o código processado no lado do cliente, enquanto o back-end funciona em um servidor que costuma ser remoto.
+Como o front-end e o back-end interagem entre si
+Imagine que você está comprando livros de uma loja online. Veja como o front-end e o back-end vão interagir:
+
+Você faz um pedido, ou seja, preenche todos os campos necessários e clica no botão "Comprar".
+O front-end transforma sua ação em uma solicitação, e o navegador envia essa solicitação para o servidor, ou seja, o back-end.
+O back-end realiza operações e cálculos lógicos, ou seja, processa a solicitação e retorna uma resposta. Por exemplo, ele verifica se o produto está em estoque e calcula o custo do pedido.
+O navegador recebe a resposta, o front-end a processa e exibe a mensagem "O pedido foi realizado. Obrigado pela sua compra!" na página.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (40).png">
+
+- URL
+Quando quer abrir um aplicativo web, você provavelmente insere a URL na barra de endereço do navegador. Por exemplo, https://www.google.com/ or https://tripleten.com/.
+
+Uma URL (Uniform Resource Locator, ou Localizador Uniforme de Recursos) é o endereço de um recurso da web. Ela mostra onde um aplicativo web (ou uma página da web) ou seu fragmento está localizado, e como acessá-lo.
+
+Durante os testes, a URL pode ser usada para entender como o front-end e o back-end interagem. Seu navegador envia diversas solicitações para recursos diferentes o tempo todo. Com a ajuda da URL, você pode encontrar apenas as solicitações responsáveis pelo funcionamento do seu aplicativo.
+Quero saber mais sobre URLs
+A estrutura de uma URL
+Veja a estrutura completa de uma URL:
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (41).png">
+Em resumo, as URLs que você costuma usar consistem apenas em esquema e nome do host: por exemplo, https://google.com. Os caminhos e os parâmetros de solicitação também são muito usados, pois a maioria dos aplicativos web consistem em múltiplas páginas (por isso precisamos de caminhos), e os usuários querem enviar informações específicas ao aplicativo (através dos parâmetros de solicitação).Entendi
+Sistema de Nomes de Domínio
+O nome de host também é chamado de nome de domínio. Trata-se do endereço de um aplicativo web usado para registrar o aplicativo na internet. Um nome de domínio consiste em caracteres atribuídos a um aplicativo pelo Sistema de Nomes de Domínio (DNS, na sigla em inglês). Por exemplo, google.com e tripleten.com são os nomes de domínio dos aplicativos web do Google e da TripleTen.
+
+Quando você digita uma URL na barra de endereço, o navegador inicia uma solicitação para um servidor DNS (Domain Name System em inglês). O servidor DNS traduz o nome do domínio em um endereço IP, que é o identificador exclusivo do servidor com as informações solicitadas.
+
+Um endereço IP é um identificador exclusivo de um servidor que armazena as informações necessárias.
+
+Uma pessoa não consegue memorizar todos os endereços IP que existem, e é por isso que o DNS foi criado. Ele transforma um nome de domínio em um endereço IP. Isso é parecido com as antigas listas telefônicas, nas quais cada nome de uma pessoa correspondia a um número de telefone.
+
+- Solicitações HTTP
+Como você já sabe, o cliente e o servidor se comunicam usando uma rede. Para ter uma comunicação fácil, o cliente e o servidor precisam usar a mesma linguagem, ou seja, um protocolo de transmissão de dados.
+
+Um protocolo de transmissão de dados é um conjunto de regras para transferir dados na internet.
+
+HTTP e HTTPS
+Um desses protocolos é o HTTP (HyperText Transfer Protocol, ou Protocolo de Transferência de Hipertexto). Hoje, você pode usar HTTP para transferir todo tipo de dados, como texto, imagens, áudio e vídeo.
+
+Entretanto, há um problema: o HTTP transfere dados de forma insegura. As pessoas podem interceptar e roubar dados privados em sites que transferem informações por HTTP. Por exemplo, é melhor não transferir dados bancários usando esse método.
+
+Para garantir a segurança, os sites usam um HTTP com mais proteção chamado de HTTPS (HyperText Transfer Protocol Secure, ou Protocolo de Transferência de Hipertexto Seguro). Ele criptografa uma conexão usando protocolos criptográficos. Assim, um cliente e um servidor podem trocar mensagens de forma segura.
+
+- Solicitações HTTP
+Solicitações HTTP são a maneira do front-end solicitar ao back-end que execute determinadas operações nos dados, como mostrar uma página da web. O back-end então retorna uma resposta.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (42).png">
+Uma solicitação é estruturada conforme as regras de transmissão de dados HTTP. Ela consiste em quatro partes:
+
+Uma linha inicial
+Cabeçalhos
+Uma linha divisória vazia
+Corpo de mensagem
+No exemplo abaixo, o usuário inseriu "TripleTen" na barra de pesquisa do Bing, e o front-end solicitou os dados necessários do back-end em uma solicitação HTTP:
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (43).png">
+Confira isso em mais detalhes abaixo.
+
+Linha inicial
+A linha inicial consiste em três elementos: um método, um caminho e uma versão do protocolo.
+
+Por exemplo: POST / search / HTTP/1.1 ou GET / HTTP/1.1.
+
+O método indica uma ação: o back-end processa essa ação. Os métodos mais comuns são GET, POST, PUT e DELETE.
+Se você não especificar o método, o back-end não vai entender o que fazer com os dados, então esse é um elemento obrigatório.
+
+O caminho para um recurso é um endereço usado pelo front-end para enviar uma solicitação para o back-end. Por exemplo, /profile/settings.
+A versão do protocolo é o número de uma versão do HTTP. Atualmente, é HTTP/1.1.
+Cabeçalhos de solicitação
+Cabeçalhos de solicitação representam informações adicionais que o front-end envia para o back-end.
+Se você não especificar o método, o back-end não vai entender o que fazer com os dados, então esse é um elemento obrigatório.
+
+O caminho para um recurso é um endereço usado pelo front-end para enviar uma solicitação para o back-end. Por exemplo, /profile/settings.
+A versão do protocolo é o número de uma versão do HTTP. Atualmente, é HTTP/1.1.
+Cabeçalhos de solicitação
+Cabeçalhos de solicitação representam informações adicionais que o front-end envia para o back-end.
+
+Existem:
+
+Cabeçalhos genéricos
+Cabeçalhos de solicitação
+Cabeçalhos de entidade
+
+Mais um exemplo
+Uma solicitação HTTP completa pode ser assim:
+
+POST /subscribe/ HTTP/1.1
+Host: сinemart.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36
+Accept-Language: en
+Connection: keep-alive
+Content-type: application/json
+
+{
+"surname": "Williams",
+"name": "Sam",
+"age": 28,
+"email": "samw@tripleten.com"
+}
+Aqui está o que cada parte significa:
+
+POST /subscribe/ HTTP/1.1: POST — escrever dados com o método POST; /subscribe — a solicitação aborda um recurso que lida com inscrições; HTTP/1.1 é a versão 1.1 do protocolo HTTP.
+Host: сinemart.com: cinemart.com — é o host para o qual o front-end envia uma solicitação.
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36: essa parte contém informações sobre os navegadores, o sistema operacional e as versões de software do cliente.
+Accept-Language: en: en — são os idiomas aceitos na resposta. Nesse caso, inglês.
+Connection: keep-alive: keep-alive — significa que a conexão com o servidor é permanente.
+Content-type: application/json: os dados estão no formato JSON.
+{"surname": "Williams", "name": "Sam", "age": 28, "email": "samw@tripleten.com"} — é o corpo da mensagem.
+O que mais?
+Uma solicitação GET não tem um corpo, enquanto uma solicitação POST geralmente tem um.
+
+- Respostas HTTP
+Na lição anterior, você aprendeu que uma solicitação HTTP consiste em três partes: uma linha de status, cabeçalhos e o corpo da mensagem. Uma resposta HTTP tem uma estrutura semelhante:
+
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (44).png">
+Linha de status
+A linha de status inclui uma versão do protocolo, um código de status e um texto de status.
+
+Por exemplo: HTTP/1.1 200 OK.
+
+A versão do protocolo é o número de uma versão HTTP para a qual uma resposta é gerada. Exemplo: HTTP/1.1.
+O código de status é um número de três dígitos que indica se o servidor processou a solicitação com sucesso. Exemplo: 200.
+O texto de status é o texto que acompanha o código de status. Exemplo: "OK."
+Os desenvolvedores usam uma lista padronizada de códigos de status e descrições.
+
+Os códigos de status são divididos em cinco grupos:
+
+Códigos    /	Descrição	/    Exemplo
+1xx       	Informativo	       102 —a solicitação foi recebida mas o processo ainda está em progresso.
+2xx	            /Sucesso /    200 — OK, a solicitação foi processada com sucesso.
+3xx	/      Redirecionamento	/ 302 — o recurso solicitado está temporariamente disponível em outro endereço.
+4xx/     	Erro de cliente /  	404 — não foi possível encontrar a página solicitada pelo usuário no servidor.
+5xx	  / Erros no servidor /  	500 — erro interno de servidor.
+-  Imagine que você quer abrir a página SUPERTESTER no site da TripleTen: https://tripleten.com/supertester.
+
+Se você clicar no link, verá um erro. O back-end enviou uma resposta para o front-end: 404 Not found. É assim que ele indicou que não foi possível encontrar a página.
+
+Os erros mais comuns, representados por códigos de status e uma descrição, são:
+
+403 Forbidden — um cliente não tem permissão para acessar o recurso.
+404 Not Found — não foi possível encontrar a página com o seguinte URL.
+500 Internal Server Error — erro interno de servidor.
+503 Service Unavailable — o serviço está temporariamente indisponível. O servidor não pode processar solicitações.
+504 Gateway Timeout — o tempo de resposta do servidor expirou.
+E quanto aos cabeçalhos?
+Cabeçalhos de resposta
+Os cabeçalhos de resposta contêm informações adicionais sobre o back-end e os tipos de dados para o front-end.
+
+A estrutura dos cabeçalhos é semelhante a de uma solicitação HTTP.
+
+Cabeçalhos genéricos (para uma solicitação HTTP)
+Cabeçalhos de resposta
+Cabeçalhos de entidade (para uma solicitação HTTP)
+Os cabeçalhos genéricos contêm parâmetros que são transmitidos tanto em uma solicitação quanto em uma resposta. Exemplo: “Connection” é o status da conexão entre um cliente e um servidor, e “Date” é a data em que a resposta do servidor foi criada.
+
+Cabeçalhos de resposta permitem que um servidor transmita informações adicionais que não cabem em uma linha de status. Exemplo: "Server" é o software que um servidor usa para lidar com a solicitação e gerar a resposta, e "Location" indica a localização exata de um recurso.
+
+Cabeçalhos de entidade definem as características do conteúdo dentro do corpo da mensagem. Exemplo: "Content-Type" é o tipo de dados da resposta.
+Corpo da mensagem
+O corpo da mensagem é usado pelo back-end para informar sobre o resultado obtido do processamento de uma solicitação.
+
+Por exemplo, o front-end solicitou a página principal do Google, google.com, ao back-end.
+O back-end processou a solicitação com sucesso: ele enviou a página necessária dentro do corpo da mensagem para o front-end.
+
+
+O navegador processou a resposta do back-end e exibiu uma página com a barra de pesquisa:
+
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (45).png">
+
+- Como visualizar solicitações do front-end e respostas do back-end
+Às vezes, quando o front-end e back-end trocam dados, alguma coisa pode sair errada. Por exemplo, o front-end enviou uma solicitação para adicionar produtos a um carrinho de compras, mas nenhum produto foi adicionado. O back-end não conseguiu lidar com a solicitação e respondeu com um erro.
+
+Para resolver isso, você precisa ser capaz de visualizar solicitações e respostas.
+
+Geralmente, você visualiza as solicitações e respostas no DevTools (Ferramentas para Desenvolvedores de Web).
+
+Para ver como o DevTools funciona, você vai testar o recurso de pedido de táxi no Urban Routes. Tente executar alguns testes por conta própria, depois encontre as solicitações do front-end e respostas do back-end no DevTools. Você pode estudar a funcionalidade de chamar um táxi nos requisitos.
+Alterando meu README.
+
+Projeto-4
+
+
+PROJETO FINAL
+
+
+
+
+
+
+
+
+
+
