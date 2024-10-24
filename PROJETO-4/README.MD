@@ -1095,7 +1095,767 @@ Geralmente, você visualiza as solicitações e respostas no DevTools (Ferrament
 Para ver como o DevTools funciona, você vai testar o recurso de pedido de táxi no Urban Routes. Tente executar alguns testes por conta própria, depois encontre as solicitações do front-end e respostas do back-end no DevTools. Você pode estudar a funcionalidade de chamar um táxi nos requisitos.
 Alterando meu README.
 
+- Cookies
+Os aplicativos web armazenam dados de maneira diferente. Nesta lição, você vai aprender sobre uma destas tecnologias: o cookie.
+
+Um cookie refere-se aos dados armazenados no dispositivo do usuário. O servidor gera dados, que ficam armazenados no computador ou smartphone do usuário. Quando o usuário abre o aplicativo novamente, o servidor recebe os dados de volta.
+
+Imagine que você vai sair de férias e decidiu escolher um hotel em um aplicativo da web, uma plataforma de pesquisa de hotéis:
+
+Você abre a página principal da plataforma.
+O navegador procura cookies em seu dispositivo e então envia uma solicitação ao servidor.
+Se essa não for a primeira vez que você está usando a plataforma de pesquisa, o navegador vai enviar os cookies salvos ao servidor. Por exemplo, os cookies podem ter informações de que o usuário tem uma conta na plataforma.
+O servidor vai processar a solicitação e gerar uma resposta com base nesses dados. Por exemplo, vai adicionar uma lista de suas reservas à resposta. Sem cookies, o servidor não vai enviar os dados, pois identifica você como um novo usuário.
+
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (45).png">
+Os cookies podem armazenar diferentes dados:
+
+Dados para autenticação. Por exemplo, você faz login em um aplicativo web, fecha a aba e, depois de um tempo, abre o aplicativo novamente. Você não vai precisar inserir seu login e senha de novo, pois os dados do status de autorização estão armazenados nos cookies.
+Dados do usuário. Por exemplo, as informações sobre os hotéis, geolocalização, idioma e moeda que o usuário visualizou.
+Dados para colecionar estatísticas. Por exemplo, as estatísticas sobre o dispositivo do usuário ou páginas visualizadas. Com base nas estatísticas, a equipe do aplicativo tira conclusões e toma decisões sobre como uma funcionalidade está operando.
+Como eu posso visualizar os cookies?
+Os cookies são pequenos arquivos de texto que você pode ver diretamente no navegador.
+
+Armazenamento local
+Armazenamento local são dados armazenados no navegador. Isso é diferente dos cookies, pois os dados do armazenamento local não são transferidos para o servidor, apenas o lado do cliente do aplicativo os utiliza.
+
+Por exemplo, você preenche um formulário de reserva de hotel e insere seu nome completo, e-mail e número de telefone. Se o aplicativo front-end armazenar dados no armazenamento local, eles não serão perdidos mesmo depois de uma página ser atualizada. Se você decidir reservar outro hotel e retornar ao formulário de reserva, seu nome, sobrenome, e-mail e número de telefone serão retirados do armazenamento local. Você não vai precisar digitar tudo de novo.
+Como eu posso ver esses dados?
+Como visualizar dados do armazenamento local
+Os dados do armazenamento local podem ser visualizados no DevTools.
+
+- Cache em testes
+Cache (ou armazenamento cache) são os dados de uma página. Quando você abre imagens, áudio, vídeo ou páginas, tudo isso é armazenado em seu dispositivo.
+
+Os cookies e o armazenamento local facilitam o uso do aplicativo. O usuário não precisa inserir os mesmos dados várias vezes, por exemplo, login, senha e número de telefone.
+
+Um cache de navegador tem outra finalidade. Quando você abre uma página de novo, ela vai carregar mais rápido porque o navegador pega os arquivos do armazenamento em cache, não do servidor.
+
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (47).png">
+Por que um testador precisa saber isso?
+Às vezes, a causa dos bugs está escondida no cache. Imagine que você encontra um bug e cria um cartão no rastreador de bugs. O desenvolvedor corrige o bug e retorna o problema para testes. Agora, você precisa ter certeza de que tudo está funcionando. Você testa o aplicativo de novo, mas nada muda. O bug ainda ocorre, mas o desenvolvedor afirma ter corrigido o problema.
+
+É possível que os dados tenham sido simplesmente armazenados em cache em seu navegador. É por isso que você vê a versão antiga da página no seu computador e não a nova versão do servidor. Para corrigir o problema, você precisa limpar o cache. Siga estas etapas para praticar:
+
+Abra o Google Chrome.
+No canto superior direito, abra o menu do navegador e selecione "Histórico".
+Clique em "Limpar dados de navegação".
+Marque apenas uma caixa: "Imagens e arquivos em cache".
+Defina o intervalo de tempo, "Todo o período".
+Clique em "Limpar dados".
+Você pode encontrar guias para outros navegadores na internet.
+
+Após atualizar o aplicativo, uma parte dos arquivos pode ser baixada do servidor e outra do armazenamento em cache. Isso pode causar alguns problemas, como com o layout do aplicativo.
+
+Se você notar esse bug em produção, não se apresse em limpar o cache. Os usuários podem encontrar o mesmo problema. Informe aos desenvolvedores e eles vão ajudar a entender o problema.
+Teste de interface do usuário de um aplicativo web: introdução
+Olá, este é o capítulo "Teste de interface do usuário de um aplicativo web"! Aqui, você vai aprender sobre diferentes elementos da interface, bem como sobre testar o layout de um aplicativo.
+
+Os usuários interagem com um aplicativo web por meio de uma interface de usuário, ou IU. Em inglês, a sigla é UI. Ela é composta de diferentes elementos da interface. O elemento básico de uma interface é o menu principal, que deixa você se mover entre as páginas web.
+
+Confira os diferentes elementos na página de "Analista de QA" da TripleTen:
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (48).png">
+Todo elemento de interface é testado de duas maneiras: visual e funcionalmente.
+
+Teste visual
+Testes visuais também são chamados de testes de layout.
+
+Um layout tem tudo a ver com a combinação e colocação dos elementos da interface de maneira que correspondam com o design.
+
+Um testador então verifica, em um navegador, se a página web tem o aspecto desejado. Se você encontrar inconsistências, como a cor ou o tamanho de um botão que não corresponde ao design, será necessário criar um relatório de bug.
+
+Teste funcional
+Um testador precisa garantir que os elementos da interface funcionam corretamente. Por exemplo, isso inclui verificar que é possível clicar nos botões e que os links levam para as páginas corretas.
+
+Se vários elementos formam uma única funcionalidade, eles são unidos em grupos, ou formulários. Por exemplo, os campos "De" e "Para" são necessários para criar uma rota e compõem um formulário.
+
+- Uma ferramenta para trabalhar com designs: Figma
+Nas lições anteriores, você aprendeu quais são os elementos da interface mais comuns. Nesta lição, você vai aprender sobre o Figma, uma ferramenta usada para testar o layout da interface.
+
+Design
+Quando uma interface é criada ou alterada, um testador compara o layout resultante com os requisitos e designs.
+
+Um design é uma representação visual de como a interface da página deve ser. O design da interface inclui a organização de elementos visuais, como botões, imagens e texto, bem como a criação de uma experiência esteticamente agradável e funcional para os usuários.
+
+Os designers criam um projeto individual para cada página de um aplicativo web. 
+Sprint 3: Teste de Aplicativos Web
+
+
+Capítulo 3/8
+Teste de interface do usuário de um aplicativo web
+Uma ferramenta para trabalhar com designs: Figma
+Nas lições anteriores, você aprendeu quais são os elementos da interface mais comuns. Nesta lição, você vai aprender sobre o Figma, uma ferramenta usada para testar o layout da interface.
+
+Design
+Quando uma interface é criada ou alterada, um testador compara o layout resultante com os requisitos e designs.
+
+Um design é uma representação visual de como a interface da página deve ser. O design da interface inclui a organização de elementos visuais, como botões, imagens e texto, bem como a criação de uma experiência esteticamente agradável e funcional para os usuários.
+
+Os designers criam um projeto individual para cada página de um aplicativo web. Por exemplo, os designs do Urban Routes são assim:
+
+
+
+Janaina
+Como isso é relevante para realizar testes?
+Tanto desenvolvedores quanto testadores usam esses designs.
+
+Um desenvolvedor front-end utiliza designs para escrever códigos. Nesse caso, primeiro o designer deve criar uma interface simples e conveniente. Essa propriedade é chamada de usabilidade (ou facilidade de uso).
+Um testador compara uma interface pronta com os designs, procurando inconsistências na localização dos elementos ou esquema de cores.
+Às vezes, os designs não correspondem aos requisitos. Pode ser que os requisitos tenham sido atualizados e os designs não. Nesse caso, você precisa começar com os requisitos.
+
+Normalmente, um design vem com uma tarefa, ou requisitos, na forma de um link ou mensagem. Por exemplo, o designer do Urban Routes pode criar o design da interface em um editor gráfico especial e depois anexar um link à tarefa no rastreador.
+O que é esse editor gráfico?
+Figma
+Um dos instrumentos mais comuns para trabalhar com designs é o Figma. Ele é um editor gráfico disponível em um navegador ou em um aplicativo para o computador ou celular. No Figma, você pode trabalhar simultaneamente com colegas em um projeto online e deixar comentários, assim como no Google Docs.
+
+É uma boa ideia entender o básico de como o Figma funciona. Neste sprint, você vai usar esse editor para revisar os designs e testar a interface do Urban Routes.
+
+Primeiro, tente descobrir como trabalhar no Figma para abrir arquivos e se mover entre os designs. Para fazer isso, conclua uma pequena tarefa:
+
+Link para as instruções e a tarefa no Figma se você estiver usando Windows.
+Link para as instruções e a tarefa no Figma se você estiver usando MacOS.
+Formulários e teste de validação
+A ideia de um formulário de aplicativo web surgiu a partir das versões físicas deles na vida real. Por exemplo, se você quiser conectar sua casa à internet, precisa preencher um contrato ou formulário em papel. De forma semelhante, um desenvolvedor cria formulários em aplicativos web conforme os requisitos, e um usuário precisa preenchê-los.
+
+Um formulário é um componente de uma página para obter informações do usuário. Um formulário de registro, uma área de pedidos em uma loja online e uma janela para escrever uma postagem no Facebook são exemplos de formulários.
+Os formulários possuem três características especiais:
+
+Para um usuário ser capaz de inserir e mandar dados, um formulário precisa ter elementos de interface: botões, botões de rádio, caixas de seleção, campos com listas de opção e campos de entrada de texto. Por exemplo, um formulário de registro é composto de seis campos de entrada e do botão "Fazer registro".
+O objetivo do formulário é fazer o usuário realizar uma ação específica em um aplicativo web. Por exemplo, se registrar.
+O usuário precisa perceber quando o objetivo for alcançado. Por exemplo, depois do registro, o usuário vai ver a seguinte mensagem na tela: "Sua conta está pronta!"
+Testes de formulários
+Formulários são testados como um único elemento. Por exemplo, um usuário precisa inserir um nome, um sobrenome, um login, uma senha e um número de telefone no formulário de registro.
+
+Todos os dados no formulário são preenchidos com um propósito em mente: o front-end não vai enviar a solicitação até você preencher todos os campos obrigatórios. É por isso que você precisa testar os elementos juntos.
+
+Lembre-se de que, se o formulário conter pedaços de dados que dependem um do outro e mudam o cenário do preenchimento no formulário, você precisa testar isso. Por exemplo, se um usuário preencher um pedido de empréstimo e escrever "Desempregado" como situação profissional, não há necessidade de inserir dados sobre salário e local de trabalho.
+
+Primeiro, você executa os testes positivos e depois os negativos.
+Para começar, o testador deve inserir dados válidos que constam nos requisitos. Você precisa garantir que, nesse caso, o aplicativo realize suas funções principais.
+
+Por exemplo, os campos "Nome de usuário" e "Senha" do formulário de cadastro devem aceitar apenas caracteres latinos, números, hifens e pontos.
+
+O cadastro deve ser bem-sucedido se você inserir um nome de usuário válido, como anna-desenvolvedora-qa, e a senha, anna.senha123, bem como se preencher corretamente outros campos.
+Quando você executar testes negativos, certifique-se de que o aplicativo não vai travar. De forma ideal, ele deve retornar uma mensagem de erro.
+
+Se você inserir dados inválidos, como caracteres proibidos, dentro de qualquer campo do formulário, uma mensagem de erro vai aparecer. Isso significa que os dados no formulário não foram aprovados na validação.
+Validação
+A validação é um mecanismo que verifica se os dados inseridos pelo usuário estão corretos.
+
+Se a validação for bem-sucedida, o aplicativo vai funcionar corretamente. Se não, o usuário vai ver uma mensagem de que os dados no campo são inválidos.
+As regras de validação são escritas pelos desenvolvedores no código. Isso é feito no front-end e também no back-end.
+
+No primeiro caso, o front-end verifica os dados imediatamente. Por exemplo, o formulário emite a mensagem "A senha contém caracteres inválidos" assim que o usuário preenche o campo "Senha".
+No segundo caso, o back-end verifica todos os dados apenas após obter a solicitação. Por exemplo, o Google Forms executa a validação dos campos depois que o usuário preenche todo um formulário e clica no botão "Enviar".
+
+- Testes em textos para detectar erros
+Os textos desempenham um papel importante na interface web.
+Os textos guiam o usuário pelos elementos da interface e ajudam a interagir com o aplicativo:
+
+O texto do logotipo se refere à empresa e ao nome do aplicativo: Urban Routes.
+Os textos acima dos campos do formulário dão dicas sobre os dados que você precisa inserir nos campos "De" e "Para".
+A parte com a informação sobre as tarifas contém botões com os nomes e custo das tarifas e uma janela pop-up com informações detalhadas sobre elas.
+Os campos de entrada contêm placeholders, ou seja, textos auxiliares que você precisa inserir no campo, por exemplo, "Enviar mensagem ao motorista".
+Os botões são rotulados com textos que dizem o que acontece quando você clica neles. Por exemplo, o texto no botão "Pedir" declara que clicar nesse botão vai pedir um táxi.
+Quem cria os textos?
+Os textos costumam ser escritos com base no seguinte cenário:
+
+O gerente de projetos atribui a tarefa ao editor. Por exemplo: "O texto para chamar táxi deve conter um cabeçalho e informações adicionais sobre a distância e duração da rota."
+O editor prepara o texto. Por exemplo: "Pedido: A rota será de [3] quilômetros e levará [3] minutos."
+Quando os textos ficam prontos, o designer encaixa tudo nos designs.
+Ao escrever o código, o desenvolvedor adiciona esses textos aos elementos necessários da interface. Nesse exemplo acima, é o botão para pedir um táxi.
+A cada etapa, algo errado pode acontecer com o texto:
+
+O usuário não entende o texto.
+Por exemplo, o editor escreveu "Pronto" para o botão de chamar um táxi. Não fica claro o que acontece quando o usuário clica nesse botão: se um táxi é pedido ou se outro campo de entrada aparece.
+
+O designer confundiu os textos no design, e o desenvolvedor transferiu isso para o código.
+Por exemplo, o texto no botão de chamar um táxi se tornou o seguinte: "Pedido:" A rota será de [3] minutos e levará [4] quilômetros." A variação correta é "Pedido: A rota será de [3] quilômetros e levará [3] minutos."
+
+O desenvolvedor cometeu um erro de digitação e transferiu o texto com um erro para o código.
+Por exemplo, o desenvolvedor trocou duas letras na palavra "Rota", e agora se lê "Rato".
+
+O desenvolvedor não transferiu a variação final do texto para o código.
+Por exemplo, o editor ainda tem que preparar o texto, mas o desenvolvedor já transferiu a variação temporária para código e esqueceu de mudá-la. Como resultado, a dica "O texto do botão vai estar aqui" fica na interface.
+
+Esse é o motivo pelo qual um testador precisa prestar atenção não apenas nos elementos do layout, mas também nos textos na interface. Afinal, eles afetam a usabilidade de um aplicativo e a reputação da empresa.
+Como eu testo os textos?
+Quando testar, tente responder duas perguntas:
+
+Você pode, como usuário do aplicativo, entender o que o texto diz?
+Existe qualquer erro de gramática, escrita ou pontuação no texto?
+Para testar os textos em busca de erros, você pode usar instrumentos especiais:
+
+Por exemplo, o Language Tool: https://languagetool.org.
+- Testes multiplataforma
+Os usuários podem acessar aplicações de diferentes dispositivos e navegadores, e essa aplicação pode se comportar de maneira diferente, por exemplo, em um notebook Windows com Google Chrome e em um iPhone com Safari. Para testar todas essas combinações, você vai precisar realizar testes entre plataformas (ou multiplataforma) e entre navegadores. Nesta lição, você vai começar a aprender sobre testes multiplataforma.
+
+Primeiro, você precisa entender qual é a diferença entre plataformas e sistemas operacionais.
+Plataformas
+Um usuário pode acessar aplicativos em um notebook, smartphone ou tablet. Há plataformas, ou seja, dispositivos que os usuários precisam para usar aplicativos.
+
+Há dois tipos de plataformas:
+
+Desktop: PCs e notebooks.
+Móvel: smartphones e tablets.Os desenvolvedores adaptam um mesmo aplicativo para diversas plataformas criando versões desktop e móvel, tornando conveniente usar o serviço em telas pequenas e grandes.
+As versões móveis e desktop são testadas separadamente. Pode ser que a versão para desktop corresponda aos designs e requisitos, mas a versão móvel, não — botões, dicas e outros elementos aparecem em lugares errados.
+Sistemas operacionais
+Um usuário se comunica com um dispositivo mediante um conjunto de programas. Alguns programas manipulam os sinais do teclado e mouse, outros deixam o usuário criar e excluir arquivos.
+
+Um conjunto de programas para comunicação entre um usuário e um dispositivo é chamado de sistema operacional, abreviado como SO. Exemplos de sistemas operacionais são Windows, Android e macOS.
+
+Você precisa testar os aplicativos executados em diferentes sistemas operacionais separadamente. Mesmo que a versão para iOS de um aplicativo atenda aos requisitos e designs, a versão do Android talvez ainda tenha problemas. Por exemplo, o layout, os botões e o posicionamento dos elementos talvez estejam errados.
+Combinar plataformas e sistemas operacionais
+Alguns sistemas operacionais são apenas para plataformas desktop, enquanto outros são apenas para versões móveis. 
+Você precisa testar diferentes combinações de plataformas e sistemas operacionais. É possível que um aplicativo funcione sem bugs em um caso, mas, em outro, pode apresentar bugs.
+
+Por exemplo, um testador confirmou que, em um notebook com Windows, o aplicativo estava funcionando conforme os requisitos e designs. Depois, o testador abriu o mesmo aplicativo em um telefone com Windows e viu que o layout não corresponde aos designs, e é bem complicado usar os botões.
+
+Para garantir que um aplicativo atenda aos requisitos e designs em qualquer plataforma e SO, os testadores executam testes multiplataforma. Eles testam se:
+
+A interface do usuário corresponde ao design.
+A funcionalidade está conforme indicado nos requisitos.
+Como selecionar sistemas operacionais para testar um aplicativo
+1- Conferir os requisitos
+Os requisitos para um aplicativo geralmente indicam um conjunto de sistemas operacionais para dispositivos móveis e desktop. Nesse caso, você só precisa testá-los.
+2- Perguntar ao gerente de projetos
+Às vezes, não há descrição dos SOs nos requisitos. Nesse caso, você pode perguntar ao gerente do projeto quais são compatíveis com o aplicativo e testá-los.
+3- . Conferir as estatísticas locais
+Se os requisitos não dizem nada sobre os sistemas operacionais compatíveis e seu gerente de projetos também não tiver uma resposta, confira as estatísticas locais do aplicativo.
+
+A maioria das empresas coleta dados sobre como os usuários usam o aplicativo. Por exemplo, quantas pessoas o abrem, quais botões recebem mais cliques e quais funções são mais usadas.
+
+Um desenvolvedor adiciona o código no aplicativo, que envia dados a instrumentos especiais, por exemplo, ao Google Analytics. Esses instrumentos coletam análises e as apresentam em forma visual.
+
+Com base nesses dados, os analistas e gerentes de projetos entendem como devem desenvolver o aplicativo, e um testador entende quais navegadores e sistemas operacionais precisam ser verificados.
+- Pergunte ao gerente de projetos ou analista onde você pode obter as estatísticas do aplicativo.
+- Verifique com o gerente de projetos quais versões a equipe concordou em considerar as mais populares. Por exemplo, em alguns projetos, a equipe concordou em oferecer suporte a um SO se mais de 2% dos usuários o usarem. Em outra empresa, a equipe pode concordar em testar os dois SOs mais populares para desktop e móvel.
+4- Conferir estatísticas gerais para um SO
+Às vezes, não há estatísticas locais para um aplicativo, como quando um serviço está apenas iniciando. Nesse caso, você pode consultar as estatísticas gerais dos sistemas operacionais no país para o qual o aplicativo foi desenvolvido.
+
+- Como selecionar navegadores para testes de sofware
+Você precisa executar testes entre navegadores se o layout tiver sido alterado, pois é melhor testar essas alterações em todos os navegadores. No entanto, geralmente, os testadores não têm tempo para fazer uma testagem minuciosa entre todos os navegadores existentes.
+
+Para economizar recursos, um testador pode executar testes apenas em navegadores compatíveis ou nos mais populares.
+Como posso saber quais são esses navegadores?
+Você pode escolher navegadores para testar da mesma forma que os sistemas operacionais:
+
+Procure nos requisitos do aplicativo.
+Pergunte ao gerente de projetos.
+Verifique as estatísticas locais para ver quais navegadores os usuários preferem para acessar o aplicativo.
+Verifique as estatísticas gerais para ver quais navegadores são populares na região.
+
+- Abordagem para layouts de aplicativos web
+Um aplicativo web geralmente vem em duas formas:
+
+Aplicativo desktop
+Aplicativo móvel
+Sprint 3: Teste de Aplicativos Web
+
+
+Capítulo 5/8
+Teste de design web responsivo
+Abordagem para layouts de aplicativos web
+Um aplicativo web geralmente vem em duas formas:
+
+Aplicativo desktop
+Aplicativo móvel
+Nesta lição, você vai aprender quais práticas de layout de aplicativo facilitam a interação com o aplicativo.
+
+Janaina
+Quero saber mais
+Há apenas dois tipos de aplicativos web, mas há muitos tipos de dispositivos:
+
+PCs
+Notebooks
+Smartphones
+Tablets
+Os usuários devem se sentir confortáveis ao interagir com o aplicativo em qualquer dispositivo. Assim, o aplicativo deve ser adaptável.
+
+Aplicativos adaptáveis são aplicativos capazes de alternar entre diferentes tamanhos de tela.
+
+Resolução da tela é o tamanho de uma imagem em uma tela em pixels.
+
+O aplicativo web se adapta à resolução da tela para que todos os elementos caibam na tela e a funcionalidade disponível permaneça.
+Avançar
+Há duas abordagens para garantir que o layout se ajuste a diferentes tamanhos de telas: design adaptável e design responsivo. Ambas as opções são frequentemente chamadas de "adaptáveis."
+Mais sobre o design adaptável
+Design adaptável
+O aplicativo usa pontos de interrupção específicos (que significa "ponto de destruição", "momento da inflexão") para se ajustar ao tamanho da tela:
+
+O designer define os pontos de interrupção no design.
+O desenvolvedor os adiciona ao código.
+Quando a largura da tela atinge estes "pontos," o layout "quebra" (transforma-se para se ajustar à nova largura).
+Por exemplo, o designer definiu os seguintes pontos de interrupção: 
+
+320 pixels - para smartphones
+
+960 pixels - para tablets
+
+1200 pixels - para navegadores desktop
+
+Se a janela do navegador for reduzida para 960 pixels, o design altera para tablet, e se for de 320 pixels, para dispositivo móvel.
+
+Quando um usuário visita um site adaptável, o servidor determina qual dispositivo o usuário tem e responde com o design necessário: para desktop, tablet ou smartphone.
+
+Design responsivo
+Design responsivo
+Se o design responsivo tiver pontos de interrupção, o design responsivo se adapta à largura da tela em qualquer ponto. Este layout, chamado como um layout fluido, estende-se em todas as direções sem saltos bruscos na imagem.
+
+As proporções e tamanhos dos elementos em um design responsivo são dados em porcentagem, e não em pixels. Como resultado, todos os componentes "estendem" suavemente com base na resolução da tela. É por isso que este design é chamado de fluido.
+
+Ferramentas para testar a versão móvel de um site
+Há duas maneiras de testar um aplicativo móvel:
+
+Em um dispositivo móvel real: as empresas costumam ter dispositivos de teste.
+Em um desktop: no botão Alternar barra de ferramentas do dispositivo, integrado ao DevTools.
+Cada método é adequado para casos específicos. 
+Teste em dispositivos móveis reais
+Em dispositivos reais você testa:
+
+Compatibilidade multiplataforma e entre navegadores: o aplicativo web deve funcionar e ser exibido corretamente em todos os sistemas operacionais e navegadores móveis compatíveis.
+O teclado na tela: você precisa garantir que o layout não muda quando o teclado aparece.
+Alguns gestos que não podem ser executados em um computador: por exemplo, como pinçar com dois dedos para diminuir o zoom.
+Teste com DevTools
+No DevTools, você pode verificar apenas alguns recursos do aplicativo móvel:
+
+Como o layout de um aplicativo web se ajusta em diferentes tamanhos de tela.
+Como o layout se comporta quando a orientação da tela é alterada.
+Alguns gestos. Por exemplo, o gesto de deslizar o dedo.
+Os testadores costumam combinar ambos os métodos:
+
+Primeiro, realizam testes em um dispositivo real.
+No DevTools, testam o layout naquelas resoluções que não podem ser verificadas em dispositivos.
+Como selecionar resoluções de tela para teste de web design responsivo.
+O que afeta a escolha?
+Um algoritmo especial vai ajudar você a escolher quais resoluções são melhores para testar o layout. Você já viu como elas funcionam nas lições sobre teste entre navegadores e multiplataforma.
+
+Aprenda como escolher a resolução da tela:
+
+Observe os requisitos e designs: se as resoluções suportadas pelo aplicativo estiverem listadas, teste apenas elas.
+Se as resoluções não estiverem listadas, consulte seu administrador de projeto. A equipe geralmente concorda com antecedência sobre quais resoluções usar para testes para cobrir telas grandes e pequenas.
+Se não houver acordo, tente consultar as estatísticas locais. Elas falarão quais resoluções de dispositivo recebem muito tráfego entre os usuários de seus aplicativos.
+Se você não tiver estatísticas de aplicativos, consulte as estatísticas gerais sobre resoluções para entender quais resoluções são as mais populares. Siga o link para ver um exemplo destas estatísticas: https://gs.statcounter.com/screen-resolution-stats
+
+Como escolher um ambiente de teste
+Os testadores testam o aplicativo em diversos ambientes, como:
+
+Diferentes dispositivos: desktop e móvel
+Diferentes sistemas operacionais
+Diferentes navegadores
+Diferentes resoluções.
+
 Projeto-4
+
+  - Introdução à API 
+O que você vai aprender:
+O que é uma API
+Qual é a função de uma API em um aplicativo
+Como as APIs REST são criadas
+Como trabalhar com o formato de dados JSON.
+Arquitetura do aplicativo
+ Há três componentes na arquitetura cliente-servidor:
+
+O cliente (client): o aplicativo com o qual o usuário está trabalhando.
+O servidor (server): o sistema que os clientes acessam para obter os dados.
+A rede (network): um sistema de múltiplos dispositivos que ajuda o cliente e o servidor a trocarem dados.
+Nos aplicativos web, o cliente é o front-end, a parte visível do aplicativo. O back-end é o lado do servidor do aplicativo, responsável pela lógica e pelos dados.
+
+O cliente e o servidor trocam mensagens via protocolos HTTP e HTTPS. O cliente envia uma solicitação; o servidor retorna uma resposta.
+Arquitetura de aplicativo é como os componentes de um aplicativo são organizados. Em um aplicativo web, a arquitetura pode incluir front-end, back-end, API e um banco de dados.
+
+API (sigla em inglês para "Application Programming Interface", que significa Interface de Programação do Aplicativo) é a interface que ajuda os aplicativos a interagirem uns com os outros. Usando a API, eles trocam dados via solicitações e respostas.
+
+Por exemplo, se o front-end do aplicativo Urban.Routes precisar obter as coordenadas de uma rota, ele se volta para a API do Google Maps.
+
+O cliente precisa traçar a rota no mapa, mas primeiro precisa obter o mapa e as coordenadas da rota. Para fazer isso, o cliente envia uma ou mais solicitações à API do Google Maps e recebe as informações necessárias na resposta.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (49).png">
+Depois disso, o cliente pode traçar o mapa e a rota na própria página.
+Um banco de dados é um conjunto de dados acessado pelo usuário via um computador. Por exemplo, o banco de dados de uma loja online pode armazenar informações sobre produtos e clientes registrados.
+O que é uma API?
+Um aplicativo pode ter uma interface de usuário — IU (ou UI, em inglês). Isso pode ser:
+
+Uma interface gráfica de usuário — GUI
+Uma interface de linha de comando — CLI
+Por meio delas, o usuário interage com aplicativos, computadores e outros dispositivos.
+
+Em contraste, a API (sigla em inglês para "Application Programming Interface", que significa Interface de Programação de Aplicativos) é a interface através da qual os aplicativos se comunicam entre si. Quando dois aplicativos se comunicam, um envia comandos e o outro executa esses comandos.
+Na arquitetura cliente-servidor, o front-end se comunica com o back-end enviando solicitações e recebendo respostas. Para criar uma solicitação ao back-end, o front-end aciona à API do back-end.
+
+No Urban.Routes, a API do back-end é um conjunto fixo de URLs. Elas podem ser usadas para transmitir dados em um determinado formato.
+- Soluções de arquitetura — REST
+A arquitetura de um aplicativo pode ser criada de diferentes maneiras. Os métodos mais comuns são SOAP e REST. Nesta lição, você vai aprender sobre a API REST.
+Características da REST
+REST (sigla do inglês para "Representational State Transfer", que significa Transferência Representacional de Estado) é uma das maneiras de projetar uma API. Sua principal característica é a facilidade de exibir dados. Em outros estilos de arquitetura, os dados são "embalados" em uma camada adicional de marcação. Não há camada adicional na REST, então fica imediatamente claro a partir das solicitações e respostas o que acontece com os dados.
+
+Por exemplo, o método POST cria dados, e o método DELETE os exclui.
+Uma solicitação ao servidor contém apenas as informações que o servidor precisa para responder. No modelo cliente-servidor, muitos clientes podem acessar o servidor ao mesmo tempo. O servidor sabe apenas as informações que vieram na solicitação do cliente e não as armazena após o processamento da solicitação.
+Estrutura multicamadas: essa arquitetura tem componentes que trocam dados, o cliente e o servidor. Além deles, também há componentes que distribuem fluxos de dados.
+Componentes uniformes: cada componente da arquitetura REST é criado conforme regras claras.
+Qualquer componente pode ser solicitado com uma URL específica. A solicitação vai conter todas as informações para que o componente possa processá-las corretamente.
+
+Armazenamento em cache: quando o servidor envia uma resposta, ele ainda possui informações sobre quais dados devem ser armazenados em cache e quais não devem.
+O estilo de arquitetura da API determina como os componentes da arquitetura trocam mensagens: em qual protocolo e formato. Ele determina a abordagem e as ferramentas que você vai usar para testar um aplicativo.
+
+Por exemplo, você precisa testar uma API. Você sabe que ela é baseada em REST, o que significa que ela aceita solicitações HTTP no formato JSON. Essas informações ajudam a decidir sobre as ferramentas necessárias. Nesse caso, talvez seja melhor fazer testes usando o Postman, que é uma ferramenta para enviar solicitações HTTP à API e receber respostas.
+HTTP: Estrutura de solicitação e resposta
+HTTP é um protocolo que permite que o cliente e o servidor troquem mensagens.
+
+O cliente envia uma solicitação HTTP ao servidor, que retorna uma resposta HTTP.
+Uma solicitação HTTP consiste em três blocos:
+
+A linha inicial contém o método de solicitação, URL e versão do protocolo.
+Os cabeçalhos transmitem informações adicionais sobre o serviço. Por exemplo, o nome do domínio de um recurso ou o tamanho do conteúdo em bytes.
+O corpo da mensagem contém os dados enviados pelo cliente. Por exemplo, o texto que um usuário inseriu no formulário de registro.
+Nas próximas lições, você vai encontrar muita coisa sobre método e URL.
+
+O método informa ao servidor qual ação executar. Os métodos mais comuns:
+
+GET - solicita dados
+POST - cria dados
+DELETE - exclui dados
+PUT - atualiza dados.
+- A URL é o endereço que o cliente usa para solicitar os dados. O servidor aceita a solicitação de URL, a processa e envia uma resposta.
+Nas próximas lições, você verá código de status, texto de status e corpo da mensagem.
+
+Do que uma resposta HTTP consiste:
+
+A linha de status contém a versão do protocolo, código de status e texto do status.
+Os cabeçalhos transmitem informações adicionais, como a data e a hora em que a resposta foi criada.
+O corpo da mensagem contém um conjunto de dados que o cliente recebe na resposta para as solicitações. Por exemplo, informações sobre todos os usuários registrados no aplicativo.
+O código de status informa se o servidor processou a solicitação com sucesso. Por exemplo, o código 200 significa que tudo ocorreu bem, e o código 500 indica um erro interno de servidor.
+
+O texto de status é uma descrição textual do código de status. Por exemplo, o erro 500 é um "erro interno de servidor".
+JSON
+Agora você sabe que precisa de uma API para comunicar e transferir informações entre aplicativos. Essas informações devem vir em um determinado formato para que os aplicativos possam se entender, e o formato JSON costuma ser usado pela arquitetura REST.
+
+O JSON (sigla em inglês para "Javascript Object Notation", que significa Notação para Objeto em JavaScript) é um formato "leve" que é geralmente usado ao trocar dados entre aplicativos, e sua principal vantagem é que ele é fácil de ler e escrever.
+
+Com o JSON, você pode descrever quase qualquer objeto do mundo real estruturalmente para uso no sistema.
+Por exemplo, você quer descrever informações sobre uma pessoa, como nome e sobrenome. No formato JSON, isso pode ser assim:
+
+{
+  "first_name": "John",
+  "last_name": "Johnson"
+}
+Você está olhando para pares do tipo key:value (chave:valor).
+
+Se você pensar em uma pessoa como um objeto, ela vai ter várias propriedades: idade, local de nascimento, formação, livro favorito e assim por diante. Duas dessas propriedades estão descritas abaixo: nome e sobrenome.
+
+"key" é o nome da propriedade, por exemplo, nome e sobrenome. "value" vem depois de um sinal de dois pontos.
+
+Key	Value
+first_name	"John"
+last_name	"Johnson"
+Os parâmetros são listados separados por vírgulas e descritos em um determinado formato. Por exemplo, key sempre é usado entre aspas duplas, enquanto value depende do tipo de dados. Os dados de texto ficam entre aspas.
+
+Observação: um conjunto de pares é colocado entre chaves, o que permite indicar que se referem ao mesmo objeto.
+
+Você precisa adicionar a idade de uma pessoa à estrutura:
+
+{
+  "first_name": "John",
+  "last_name": "Johnson",
+  "age": 35
+}
+A chave age aparece, mas seu valor é um número. Os números geralmente não são incluídos entre aspas, mas às vezes você precisa transmitir um "número" (por significado), como uma "string" (usando a entrada JSON) — por exemplo, "age": "100".
+
+Aqui 100 é uma string no contexto do formato JSON (e será tratado pelo aplicativo como uma string), mas é essencialmente um número (o usuário sabe que 100 é um número).
+
+A próxima etapa é adicionar informações sobre estado civil e se a pessoa tem filhos:
+
+{
+  "first_name": "John",
+  "last_name": "Johnson",
+  "age": 35, 
+  "is_married": true,
+  "has_kids": false
+}
+Uma lógica binária condicional opera no "Estado civil":
+
+true
+false
+Esses valores são chamados de booleanos. Eles também não são colocados entre aspas. A chave é descrita como uma condição: "Se a pessoa for casada", "Se tiver filhos". O valor responde a essas perguntas: sim ou não.
+
+E se um parâmetro puder conter diversos valores? Por exemplo, endereços de e-mail disponíveis são especificados da seguinte forma:
+
+{
+  "first_name": "John",
+  "last_name": "Johnson",
+  "age": 35, 
+  "is_married": true,
+  "has_kids": false,
+  "emails": ["johnson.j@tripleten.com", "john@tripleten-students.com"]
+}
+Ok
+Escrever um valor entre colchetes indica uma lista, ou, em outras palavras, um vetor. A lista pode conter um valor — "type": ["dog"], diversos valores — "type": ["dog", "cat"] ou ser deixada em branco. Por exemplo, se uma pessoa não tiver endereço de e-mail, esses dados ainda serão transmitidos, e vai ficar assim: "emails": [].
+
+Os valores em um vetor podem ser representados não apenas por texto, como também por números e outros objetos. Por exemplo, agora temos alguns dados sobre animais de estimação:
+
+{
+  "first_name": "John",
+  "last_name": "Johnson",
+  "age": 35, 
+  "is_married": true,
+  "has_kids": false,
+  "emails": ["johnson.j@tripleten.com", "john@tripleten-students.com"],
+  "favorite_numbers": [0, 7, 42],
+  "pets": [{"type": "dog", "name": "Buddy"}, {"type": "cat", "name": "Watson"}]
+}
+Legal
+Em um vetor, os dados são separados por vírgulas em uma lista, e a ordem é importante. Por outro lado, em objetos, onde os parâmetros são definidos por pares key:value, a ordem não é importante.
+
+Assim como um vetor, um objeto pode estar vazio. Nesse caso, o valor será escrito entre chaves, sem conteúdo entre elas: {}.
+Se você quiser especificar que nenhum valor foi atribuído a um parâmetro, use a notação "pets": null — a palavra null indica que o valor do parâmetro não foi definido.
+
+A estrutura de dados no formato JSON pode ser muito diversa e depende das informações que você quer descrever. Pode ser uma lista simples, como os artigos de produtos que o usuário comprou [10429, 23294, 12357] ou até um longo conjunto de parâmetros, onde cada um é um objeto separado com sua própria estrutura. Aqui estão alguns exemplos:
+
+{
+     "user": {
+         "name": "John",
+         "lastVisited": "2022-02-11",
+         "previous_order_ids": [10032, 12158, 77923]
+     },
+     "last_order": {
+         "article": 76240,
+         "prepaid": true,
+         "price": 999.99,
+         "need_delivery": false,
+         "comments": null
+     },
+     "additional_info": {}
+ }
+
+Introdução: Testes de API com Postman
+
+O que você vai aprender:
+Como enviar solicitações HTTP via Postman
+Como configurar a variável URL e cURL
+Como testar interações com bancos de dados
+O que você precisa incluir em um relatório de bug para API
+O que são logs e como lê-los
+Onde encontrar e como usar a documentação da API.
+Postman: recursos básicos
+O Postman é uma ferramenta para testar API que ajuda a enviar as solicitações HTTP e HTTPS à API e receber as respostas.
+URL dinâmica no Postman
+Imagine que, ao verificar a API, você conseguiu criar e salvar três solicitações no Postman, mas houve um erro no servidor ou você se distraiu e teve de encerrá-lo.
+
+Para continuar a verificação, você deve reiniciar o servidor, mas a URL será alterada, e seria necessário alterá-la em todas as solicitações para que sejam enviadas ao novo endereço.
+
+Alterar a URL em três casos não é difícil, mas, às vezes, há muitas solicitações e leva muito tempo alterá-las manualmente.
+O Postman tem um recurso de "Ambiente" (Environment) que permite definir uma variável e colocá-la em diferentes solicitações.
+
+Se você alterar o valor de uma variável em um lugar, ela será alterada em todos os lugares.
+
+Com isso, não é necessário alterar URLs de maneira manual. Você coloca uma variável em vez de um endereço, e alterar esse valor o altera em todas as outras solicitações automaticamente.
+- 
+cURL e geração de solicitação do Postman para cURL
+Há mais um recurso que você pode usar no Postman: trabalhar com cURL.
+
+O que é cURL?
+cURL é um aplicativo para manipular solicitações HTTP(S). Se você usa MacOS ou Windows 10, já tem ele no seu computador. Se você usa uma versão antiga do Windows ou Linux, vai precisar instalar o cURL. Por enquanto, você não vai precisar do aplicativo, já que vai fazer tudo com o Postman.
+
+O cURL trabalha com as solicitações HTTP(S) via console.
+Normalmente, você manipula seu computador por meio de uma interface gráfica ao clicar nos ícones e ao abrir as janelas dos programas. O console, ou linha de comando, deixa você manipular seu computador via texto. Você escreve um comando e o computador o executa.
+
+cURL é um aplicativo que permite "interagir" com os servidores diretamente do console. Você escreve um comando de texto e uma solicitação é enviada à API.
+
+Por exemplo, esta é uma solicitação na API do Urban.Grocers se você precisar procurar por kits de produtos com ids 1 e 22:
+
+curl --location --request POST '<https://2d716e9e-f01f-459a-ba2d-79921085b3f3.containerhub.tripleten-services.com/api/v1/products/kits>' \ 
+--header 'Content-Type: application/json' \ 
+--data-raw '{"ids": [1, 22]}'
+
+Se você escrever esse comando no console, uma solicitação vai ser enviada à API e uma resposta será retornada. Você vai vê-la lá também.
+Aqui está a composição da solicitação:
+
+curl — é o comando que inicia o cURL.
+--request POST — é o parâmetro que especifica o método e a URL. É o método POST e URL no exemplo: https://2d716e9e-f01f-459a-ba2d-79921085b3f3.containerhub.tripleten-services.com/api/v1/products/kits.
+--header — é o parâmetro que contém os cabeçalhos da solicitação. No exemplo, o cabeçalho informa que o corpo da solicitação está no formato JSON: Content-Type: application/json.
+--data-raw — é o parâmetro que contém o corpo da solicitação. No exemplo, os ids dos produtos 1 e 22 são enviados no corpo.
+<img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (50).png">
+Um comando cURL é fácil de copiar e enviar a seus colegas em qualquer aplicativo de mensagens. Você também pode adicioná-lo a requisitos, checklists, casos de teste e relatórios de bug por conveniência.
+
+Imagine que você está testando uma API e encontra um bug. Você vai precisar escrever um relatório de bug para que o desenvolvedor ou outro testador possa executar a solicitação e recriar o problema. Se você adicionar o comando cURL, seu colega poderá fazer isso bem rápido usando o console.
+Como faço uma solicitação?
+Você pode escrevê-la, mas não vai precisar disso agora, pois é suficiente poder converter uma solicitação do Postman para cURL.
+
+Como converter uma solicitação do Postman para um comando cURL?
+Abra o Postman. Encontre uma solicitação para a API do Urban.Grocers que você criou nas lições anteriores, por exemplo, "Criar um kit vazio."
+
+Encontre a área para trabalhar com a solicitação. Clique no ícone </>.
+Banco de dados e API
+Outro elemento de uma arquitetura de aplicativo é o banco de dados, que armazena informações no aplicativo.
+
+O back-end interage com o banco de dados enviando solicitações e recebendo dados na resposta.
+Entendido!
+Os bancos de dados podem ser organizados de diferentes maneiras. A mais comum é a relacional, onde as informações são armazenadas em tabelas.
+Como isso está relacionado a testes de API?
+Ao testar a API, é importante verificar se as alterações — adições, modificações ou exclusão de dados — foram registradas corretamente no banco de dados.
+- 
+Relatório de bugs para API
+Um relatório de bug é um relatório específico que descreve informações sobre o que está errado e precisa ser corrigido. Ele tem campos opcionais e obrigatórios. 
+
+Logs na API
+Os logs são registros de eventos que acontecem em um aplicativo.
+
+Os eventos em uma API também são registrados. Veja o que está incluído nos logs de uma API:
+
+Uma solicitação HTTP com uma descrição de parâmetros, cabeçalhos e o corpo
+Os bugs que ocorreram durante o processamento da solicitação
+Às vezes, uma resposta HTTP com uma descrição do código da resposta é adicionada à estrutura do log. Os desenvolvedores precisam disso para depurar o aplicativo; por exemplo, se quiserem entender se o serviço retorna uma resposta.
+
+Por que um testador precisa de logs?
+Imagine que você está testando recursos e enviando uma solicitação à API. Se um erro for retornado, você pode encontrá-lo nos logs e entender o que aconteceu no aplicativo. Os logs podem ser copiados e anexados a um relatório de bug.
+- Documentação da API
+Quando você compra um dispositivo, como uma impressora, sempre há instruções ou documentação.
+
+Ao trabalhar com uma API, você também precisa de documentação.
+A documentação ajuda a entender como a API de um determinado componente ou aplicativo funciona. Aqui está o que ela descreve:
+
+Ações que podem ser feitas com o sistema; os dados que podem ser solicitados.
+Limitações em dados transmitidos. Por exemplo, alguns parâmetros podem ter restrições sobre o tipo de dados (número ou string) e de tamanho (2-50 caracteres).
+A estrutura das solicitações, respostas e endereços para os quais as solicitações podem ser enviadas.
+Mais alguma coisa?
+A documentação descreve o que a API pode fazer — quais solicitações ela aceita e quais respostas pode enviar. Isso é uma documentação separada, diferente da documentação para o back-end.
+Quem escreve a documentação?
+O desenvolvedor ou arquiteto responsável pela criação da API de um componente ou aplicativo. Essas pessoas são as melhores para descrever o que é a API.
+Escritores técnicos ou analistas que trabalham com o aplicativo.
+Onde posso encontrar a documentação?
+A documentação pode estar disponível abertamente se o produto for público. Alguns exemplos:
+
+API Facebook
+API Slack
+Ela pode estar indisponível se for um serviço interno de um produto ou empresa. Se você for testar algum serviço, peça a documentação ao gerente do projeto ou aos desenvolvedores.
+- Swagger
+Onde a documentação é armazenada?
+Você pode armazenar a documentação no formato de texto se a API e sua documentação forem simples e pequenas.
+
+Se o sistema for complexo, a documentação cresce, dificultando a manutenção e navegação.
+
+Para simplificar o trabalho com a documentação, são utilizadas ferramentas que a geram automaticamente. Um exemplo disso é o Swagger
+O desenvolvedor prepara um arquivo especial com uma descrição de solicitação para a API, e a ferramenta o transfere automaticamente para a estrutura.
+Cada linha especifica o caminho que deve ser adicionado à URL para executar a solicitação.
+
+Por exemplo, o aplicativo Urban.Grocers está localizado em https://{id}.containerhub.tripleten-services.com. Você precisa criar uma solicitação que vai ajudar a obter todos os cartões no aplicativo. A solicitação para a estrutura URL + caminho vai ser assim: https://{id}.containerhub.tripleten-services.com/api/v1/cards.
+A solicitação chama a função correspondente na API, o que significa que o cliente entra em contato com o servidor.
+
+A parte do serviço para a qual o cliente envia a solicitação é chamada de endpoint. Um endpoint também é chamado de "método API" ou "URL de recurso.”
+
+Quando ele é acessado pela URL, o endpoint realiza a ação necessária.
+Na documentação, você pode clicar na linha com o método API para ver as informações detalhadas sobre a solicitação.
+
+Apidoc
+Agora você sabe como estudar a documentação de API no Swagger. Equipes diferentes usam diferentes ferramentas para armazenar a documentação, dependendo do que for mais conveniente para cada caso. Há outra ferramenta para trabalhar com a documentação, o Apidoc, que você vai usar nesta lição.
+
+O Swagger e o Apidoc têm mecanismos semelhantes: a documentação de API é gerada automaticamente a partir de um arquivo. Eles diferem no design da interface e nas características técnicas dos geradores, que não são visíveis para o usuário.
+- Introdução: Design de testes para teste de API
+O que você vai aprender:
+Como projetar testes positivos e negativos para API
+Como identificar classes de equivalência e valores de limite para uma API
+Como testar a validação de API
+Testes positivos
+O teste de API usa as mesmas abordagens que outros tipos de teste:
+
+- Testes positivos e negativos
+Técnicas de design de teste: classes de equivalência e valores-limite, tabelas de decisão, teste de pares
+Vamos começar com os testes positivos e negativos para uma API.
+Quais são as características dos testes positivos para uma API?
+Ao testar aplicativos móveis e web, você interage com eles mediante uma interface gráfica como se fosse um usuário. Para testar uma API, você "interage" com o aplicativo da mesma forma que outro aplicativo faria: com as solicitações HTTP.
+
+- Os casos de testes positivos verificam se o aplicativo funciona sem erros em dois casos:
+
+se você usá-lo como pretendido e não tentar quebrá-lo.
+se você inserir dados válidos conforme os requisitos.
+Um exemplo de API
+Imagine que você precisa testar a API do aplicativo Urban.Grocers. Aqui estão os requisitos.
+
+Um deles diz: "Deve haver uma URL que permite criar um kit: POST /api/v1/kits"
+
+Você precisa testar se a URL realmente permite que o usuário crie um kit. Isso é o que você vai precisar fazer:
+
+Enviar uma solicitação à URL especificada para criar um kit
+Verificar se o kit realmente foi criado
+É um teste positivo: você garante que os recursos funcionam conforme o esperado.
+Um teste passo a passo
+Primeiro, você deve criar uma solicitação. Aqui está o que você precisa saber para isso:
+Quais dados enviar e em qual formato criar a solicitação (parâmetros da solicitação)
+Se há limitações na entrada; como o número de caracteres
+Para qual URL enviar a solicitação e qual método usar.
+Para saber quais dados devem ser enviados na solicitação, confira a documentação da API. Ela menciona os parâmetros. 
+- Testes negativos
+Os casos de testes negativos verificam como um aplicativo se comporta nos seguintes casos:
+
+Você usa o aplicativo de forma diferente da pretendida pelos desenvolvedores.
+Você insere dados inválidos.
+Um exemplo de API
+Por exemplo, você continua projetando testes para criar um kit no Urban.Grocers.
+
+Você já sabe o que precisa para enviar o cardid existente no cartão. Usar os recursos de maneira não intencional, enviando um cardId inexistente. Isso é um teste negativo.
+
+Se o comportamento do aplicativo nesse caso não estiver descrito nos requisitos, é importante verificar que ele não vai travar ou ter falhas.
+E se o comportamento estiver descrito nos requisitos?
+Se o comportamento estiver descrito, o aplicativo deve responder conforme necessário. Por exemplo, os requisitos informam: "Se o cardId especificado não estiver no banco de dados, uma resposta 404 Not found deve retornar, e a mensagem deve informar "O cartão especificado não foi encontrado."
+
+Então, se você enviar uma solicitação à API com um cardId inexistente, já sabe como o aplicativo vai reagir: neste caso um erro 404 é o comportamento normal para o aplicativo, e não será preciso criar um relatório de bug.
+Como executo o teste?
+Você precisa fazer o mesmo que na última lição: criar uma solicitação, enviar à API e ver o que acontece. Os dados, porém, serão diferentes.
+
+Por exemplo, você pode usar um id inexistente: 100500. Não existe tal valor na tabela card_model.
+
+Você vai obter uma solicitação com o corpo {"cardId":100500, "name": "Salada fresca"}.
+
+Qual será o resultado esperado?
+O resultado esperado costuma estar escrito nos requisitos, como no exemplo acima. Se não estiver lá, verifique se o aplicativo não trava. O ideal é que um código de erro seja retornado. 
+
+Se o aplicativo parar de funcionar, você precisa relatar um bug.
+Classes de equivalência
+Lembre-se de como funciona a técnica de classe de equivalência. Você precisa observar os requisitos e identificar os grupos de valores para os quais os aplicativos vão reagir da mesma maneira.
+
+Por exemplo, se o requisito for "Comprimento do nome de 2 a 15 caracteres", você terá três classes: 0 a 1 caractere, 2 a 15 caracteres, e 16 a ∞ caracteres. Para testar uma classe, você precisa testar apenas um valor de classe.
+
+Um exemplo de API
+O Urban.Grocers tem um recurso "Criar usuário". Descubra como testá-lo usando as classes de equivalência.
+
+Confira os requisitos aqui. Eles dizem: "Um usuário pode se registrar." A URL que cria o usuário é POST /api/v1/users.
+
+Para projetar um teste com classes de equivalência, você precisa:
+
+Criar uma solicitação que verifica se o usuário pode ser criado.
+Verificar se a solicitação funciona.
+Identificar as classes de equivalência.
+Usar a solicitação como modelo e inserir nela diversas variantes de dados baseadas nas classes de equivalência.
+Vamos passo a passo
+Primeiro, você precisa criar uma solicitação com quaisquer dados e verificar se ela funciona.
+
+Consulte a documentação da API. Descubra o seguinte:
+
+Qual endpoint é responsável pela criação de um usuário
+Quais parâmetros enviar na solicitação para criar um usuário.
+- Valores-limite
+Os valores-limite são o primeiro e último ponto no intervalo. Por exemplo, se o nome puder ter de 0 a 15 caracteres, os valores-limite são 0 e 15.
+
+Validação de API
+Validação é um mecanismo que testa se a solicitação à API foi feita corretamente. Ela verifica se você especificou os dados no formato correto e se há erros na estrutura.
+
+As regras de validação são escritas pelos desenvolvedores no código, tanto do lado do cliente quanto do servidor. É melhor escrever a validação no back-end, pois um intruso pode contorná-la no lado do cliente, mas conseguir acesso ao servidor não é comum.
+
+A validação pode alertar sobre o seguinte:
+
+A estrutura da solicitação está incorreta. Por exemplo, alguns parâmetros obrigatórios ou tags estão faltando.
+Os dados não estão registrados corretamente: há muitos caracteres ou o formato está errado.
+Janaina
+Por que um testador precisa disso?
+Quando você testa a API, precisa testar a validação.
+
+A validação da estrutura da solicitação
+Aqui está o que pode dar errado com a estrutura da solicitação:
+
+Tipo de dados incorreto no corpo (como um número em vez de uma string ou vice-versa)
+Estrutura incorreta do corpo da solicitação (por exemplo, o formato JSON não foi usado)
+
+Alterando meu README.
+
 
 
 PROJETO FINAL
