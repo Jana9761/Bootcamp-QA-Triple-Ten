@@ -1877,6 +1877,7 @@ Aplique classes de equivalência, valores-limite e uma tabela de decisão quando
 Otimize o número de testes nos testes de interface de usuário e testes lógicos dos recursos.
 Execute testes e faça relatórios de bugs, se necessário.
 Use o DevTools ou Postman para verificar solicitações para determinadas URLs.
+- Alterando meu README.
 
 
 
