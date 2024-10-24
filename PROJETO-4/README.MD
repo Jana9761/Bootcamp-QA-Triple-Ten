@@ -1352,7 +1352,6 @@ Aplicativo desktop
 Aplicativo móvel
 Sprint 3: Teste de Aplicativos Web
 
-
 Capítulo 5/8
 Teste de design web responsivo
 Abordagem para layouts de aplicativos web
@@ -1361,8 +1360,6 @@ Um aplicativo web geralmente vem em duas formas:
 Aplicativo desktop
 Aplicativo móvel
 Nesta lição, você vai aprender quais práticas de layout de aplicativo facilitam a interação com o aplicativo.
-
-Janaina
 Quero saber mais
 Há apenas dois tipos de aplicativos web, mas há muitos tipos de dispositivos:
 
@@ -1446,8 +1443,7 @@ Diferentes navegadores
 Diferentes resoluções.
 
 Projeto-4
-
-  - Introdução à API 
+- Introdução à API 
 O que você vai aprender:
 O que é uma API
 Qual é a função de uma API em um aplicativo
@@ -1472,7 +1468,7 @@ O cliente precisa traçar a rota no mapa, mas primeiro precisa obter o mapa e as
 <img src="C:\Users\janai\Documents\Botcamp QA\Imagens\Image (49).png">
 Depois disso, o cliente pode traçar o mapa e a rota na própria página.
 Um banco de dados é um conjunto de dados acessado pelo usuário via um computador. Por exemplo, o banco de dados de uma loja online pode armazenar informações sobre produtos e clientes registrados.
-O que é uma API?
+O que é uma API:
 Um aplicativo pode ter uma interface de usuário — IU (ou UI, em inglês). Isso pode ser:
 
 Uma interface gráfica de usuário — GUI
@@ -1652,7 +1648,7 @@ Com isso, não é necessário alterar URLs de maneira manual. Você coloca uma v
 cURL e geração de solicitação do Postman para cURL
 Há mais um recurso que você pode usar no Postman: trabalhar com cURL.
 
-O que é cURL?
+O que é cURL :
 cURL é um aplicativo para manipular solicitações HTTP(S). Se você usa MacOS ou Windows 10, já tem ele no seu computador. Se você usa uma versão antiga do Windows ou Linux, vai precisar instalar o cURL. Por enquanto, você não vai precisar do aplicativo, já que vai fazer tudo com o Postman.
 
 O cURL trabalha com as solicitações HTTP(S) via console.
@@ -1677,8 +1673,6 @@ curl — é o comando que inicia o cURL.
 Um comando cURL é fácil de copiar e enviar a seus colegas em qualquer aplicativo de mensagens. Você também pode adicioná-lo a requisitos, checklists, casos de teste e relatórios de bug por conveniência.
 
 Imagine que você está testando uma API e encontra um bug. Você vai precisar escrever um relatório de bug para que o desenvolvedor ou outro testador possa executar a solicitação e recriar o problema. Se você adicionar o comando cURL, seu colega poderá fazer isso bem rápido usando o console.
-Como faço uma solicitação?
-Você pode escrevê-la, mas não vai precisar disso agora, pois é suficiente poder converter uma solicitação do Postman para cURL.
 
 Como converter uma solicitação do Postman para um comando cURL?
 Abra o Postman. Encontre uma solicitação para a API do Urban.Grocers que você criou nas lições anteriores, por exemplo, "Criar um kit vazio."
@@ -1692,7 +1686,7 @@ Entendido!
 Os bancos de dados podem ser organizados de diferentes maneiras. A mais comum é a relacional, onde as informações são armazenadas em tabelas.
 Como isso está relacionado a testes de API?
 Ao testar a API, é importante verificar se as alterações — adições, modificações ou exclusão de dados — foram registradas corretamente no banco de dados.
-- 
+
 Relatório de bugs para API
 Um relatório de bug é um relatório específico que descreve informações sobre o que está errado e precisa ser corrigido. Ele tem campos opcionais e obrigatórios. 
 
@@ -1716,7 +1710,7 @@ A documentação ajuda a entender como a API de um determinado componente ou apl
 Ações que podem ser feitas com o sistema; os dados que podem ser solicitados.
 Limitações em dados transmitidos. Por exemplo, alguns parâmetros podem ter restrições sobre o tipo de dados (número ou string) e de tamanho (2-50 caracteres).
 A estrutura das solicitações, respostas e endereços para os quais as solicitações podem ser enviadas.
-Mais alguma coisa?
+
 A documentação descreve o que a API pode fazer — quais solicitações ela aceita e quais respostas pode enviar. Isso é uma documentação separada, diferente da documentação para o back-end.
 Quem escreve a documentação?
 O desenvolvedor ou arquiteto responsável pela criação da API de um componente ou aplicativo. Essas pessoas são as melhores para descrever o que é a API.
@@ -1728,6 +1722,7 @@ API Facebook
 API Slack
 Ela pode estar indisponível se for um serviço interno de um produto ou empresa. Se você for testar algum serviço, peça a documentação ao gerente do projeto ou aos desenvolvedores.
 - Swagger
+
 Onde a documentação é armazenada?
 Você pode armazenar a documentação no formato de texto se a API e sua documentação forem simples e pequenas.
 
@@ -1749,7 +1744,9 @@ Apidoc
 Agora você sabe como estudar a documentação de API no Swagger. Equipes diferentes usam diferentes ferramentas para armazenar a documentação, dependendo do que for mais conveniente para cada caso. Há outra ferramenta para trabalhar com a documentação, o Apidoc, que você vai usar nesta lição.
 
 O Swagger e o Apidoc têm mecanismos semelhantes: a documentação de API é gerada automaticamente a partir de um arquivo. Eles diferem no design da interface e nas características técnicas dos geradores, que não são visíveis para o usuário.
+
 - Introdução: Design de testes para teste de API
+
 O que você vai aprender:
 Como projetar testes positivos e negativos para API
 Como identificar classes de equivalência e valores de limite para uma API
@@ -1854,12 +1851,8 @@ Tipo de dados incorreto no corpo (como um número em vez de uma string ou vice-v
 Estrutura incorreta do corpo da solicitação (por exemplo, o formato JSON não foi usado)
 
 Alterando meu README.
-
-
-
 PROJETO FINAL:
-
-Chegou a hora de colocar todos seus conhecimentos em práticas e realizar um projeto que irá abordar, todo conteúdo estudado no decorrer deste conteúdo que estudo.
+Está  na hora de colocar seus conhecimentos em práticas e realizar um projeto que irá abordar, todo conteúdo estudado no decorrer deste conteúdo que estudo.
 Neste sprint, você vai concluir o projeto final deste programa: três tarefas grandes. 
 A primeira tarefa é teórica e vai verificar seu conhecimento sobre os principais aspectos de teste. Você vai responder a perguntas semelhantes em entrevistas de emprego, então leve essa tarefa a sério.
 
@@ -1878,14 +1871,3 @@ Otimize o número de testes nos testes de interface de usuário e testes lógico
 Execute testes e faça relatórios de bugs, se necessário.
 Use o DevTools ou Postman para verificar solicitações para determinadas URLs.
 - Alterando meu README.
-
-
-
-
-
-
-
-
-
-
-
