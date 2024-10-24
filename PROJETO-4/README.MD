@@ -1844,7 +1844,6 @@ A validação pode alertar sobre o seguinte:
 
 A estrutura da solicitação está incorreta. Por exemplo, alguns parâmetros obrigatórios ou tags estão faltando.
 Os dados não estão registrados corretamente: há muitos caracteres ou o formato está errado.
-Janaina
 Por que um testador precisa disso?
 Quando você testa a API, precisa testar a validação.
 
@@ -1858,7 +1857,27 @@ Alterando meu README.
 
 
 
-PROJETO FINAL
+PROJETO FINAL:
+
+Chegou a hora de colocar todos seus conhecimentos em práticas e realizar um projeto que irá abordar, todo conteúdo estudado no decorrer deste conteúdo que estudo.
+Neste sprint, você vai concluir o projeto final deste programa: três tarefas grandes. 
+A primeira tarefa é teórica e vai verificar seu conhecimento sobre os principais aspectos de teste. Você vai responder a perguntas semelhantes em entrevistas de emprego, então leve essa tarefa a sério.
+
+As tarefas 2 e 3 são práticas e vão verificar se você sabe analisar e fazer o design de testes; ou seja, se você sabe como testar aplicativos da web e APIs.
+
+Você vai testar o aplicativo Urban.Scooter: um serviço que permite alugar uma scooter elétrica por alguns dias.
+
+O que precisa ser feito
+Observe que você não precisa testar todo o aplicativo. Examine o que exatamente você precisa testar.
+Estude a documentação do aplicativo em cada tarefa. Ela está armazenada como uma lista de requisitos e designs, bem como requisitos para as URLs para as quais o aplicativo envia dados.
+Crie um mapa mental para visualizar os requisitos onde for necessário.
+Divida os recursos em blocos atômicos e defina objetos de teste.
+Faça o design de testes para lidar com todos os requisitos.
+Aplique classes de equivalência, valores-limite e uma tabela de decisão quando apropriado.
+Otimize o número de testes nos testes de interface de usuário e testes lógicos dos recursos.
+Execute testes e faça relatórios de bugs, se necessário.
+Use o DevTools ou Postman para verificar solicitações para determinadas URLs.
+
 
 
 
